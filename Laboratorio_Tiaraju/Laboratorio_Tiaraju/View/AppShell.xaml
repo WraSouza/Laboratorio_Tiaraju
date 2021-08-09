@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:pages="clr-namespace:Laboratorio_Tiaraju.View"
+             BackgroundColor="#FF4500"
+             x:Class="Laboratorio_Tiaraju.View.AppShell">
+
+    <FlyoutItem Title="Início" Icon="home.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:MainView}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="RH" Icon="rhicon.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:RHView}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="TI" Icon="tiicon.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:TIView}"/>
+    </FlyoutItem>
+
+</Shell>
