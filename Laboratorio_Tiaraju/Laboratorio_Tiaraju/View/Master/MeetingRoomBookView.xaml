@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Pauta Fixa"
-             x:Class="Laboratorio_Tiaraju.View.RHView">
+             Title="Reservar Sala de Reunião"
+             
+             x:Class="Laboratorio_Tiaraju.View.Master.MeetingRoomBookView">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Reservar Sala de Reunião"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

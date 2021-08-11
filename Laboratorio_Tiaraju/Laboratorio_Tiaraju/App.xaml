@@ -4,5 +4,29 @@
              x:Class="Laboratorio_Tiaraju.App">
     <Application.Resources>
 
+        <Color x:Key="White">#FFFFFF</Color>
+        <Color x:Key="OrangeRed">#ff4500</Color>
+        <Color x:Key="LightGray">#d3d3d3</Color>
+        <Color x:Key="Black">#000000</Color>
+        
+        
+
+        <Style TargetType="Element" x:Key="FlyoutBaseStyle">
+            <Setter Property="Shell.UnselectedColor" Value="{StaticResource LightGray}"/>
+            <Setter Property="Shell.ForegroundColor" Value="{StaticResource OrangeRed}"/>            
+            <Setter Property="Shell.BackgroundColor" Value="{StaticResource White}"/>
+            <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource White}"/>
+            <Setter Property="Shell.NavBarHasShadow" Value="False"/>
+            <Setter Property="Shell.TitleColor" Value="{StaticResource OrangeRed}"/>            
+            <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource OrangeRed}"/>
+        </Style>
+
+       
+        <Style TargetType="FlyoutItem" BasedOn="{StaticResource FlyoutBaseStyle}"/>
+        <Style TargetType="ShellItem" BasedOn="{StaticResource FlyoutBaseStyle}"/>
+        <Style TargetType="TabBar" BasedOn="{StaticResource FlyoutBaseStyle}"/>
+
+
+
     </Application.Resources>
 </Application>

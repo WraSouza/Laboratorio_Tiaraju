@@ -55,7 +55,7 @@
                            Aspect="Fill"/>
 
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Aniversariantes"
+                        <Label Text="Férias"
                            VerticalOptions="End"
                            HorizontalOptions="StartAndExpand"
                            FontSize="20"
@@ -80,7 +80,11 @@
                            TextColor="White"/>
 
                         <Image Source="add.png"
-                               VerticalOptions="End"/>
+                               VerticalOptions="End">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenMeetingRoomView}"/>
+                            </Image.GestureRecognizers>
+                        </Image>
                     </StackLayout>
                 </Grid>
 

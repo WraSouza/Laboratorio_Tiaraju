@@ -1,20 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:pages="clr-namespace:Laboratorio_Tiaraju.View"
-             BackgroundColor="#FF4500"
+             xmlns:pages="clr-namespace:Laboratorio_Tiaraju.View"         
              x:Class="Laboratorio_Tiaraju.View.AppShell">
 
     <FlyoutItem Title="Início" Icon="home.png">
-        <ShellContent ContentTemplate="{DataTemplate pages:MainView}"/>
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate pages:MainView}"/>
+        </Tab>
     </FlyoutItem>
 
     <FlyoutItem Title="RH" Icon="rhicon.png">
-        <ShellContent ContentTemplate="{DataTemplate pages:RHView}"/>
+        <ShellContent Title="Pauta Fixa" Icon="notes.png" ContentTemplate="{DataTemplate pages:RHView}"/>
+        <ShellContent Title="Informativo Covid" Icon="virus.png" ContentTemplate="{DataTemplate pages:InformativoCovidView}"/>
     </FlyoutItem>
 
     <FlyoutItem Title="TI" Icon="tiicon.png">
         <ShellContent ContentTemplate="{DataTemplate pages:TIView}"/>
     </FlyoutItem>
+     
 
 </Shell>

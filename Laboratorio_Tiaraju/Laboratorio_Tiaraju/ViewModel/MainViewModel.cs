@@ -11,6 +11,7 @@ namespace Laboratorio_Tiaraju.ViewModel
         public Command OpenRHView { get; set; }
         public Command OpenTIView { get; set; }
         public Command OpenCardapioView { get; set; }
+        public Command OpenMeetingRoomView { get; set; }
         public INavigation Navigation { get; set; }
 
         public MainViewModel()
@@ -21,6 +22,7 @@ namespace Laboratorio_Tiaraju.ViewModel
         {
             this.Navigation = navigation;
             OpenCardapioView = new Command(async () => await AbrirCardapioView());
+            OpenMeetingRoomView = new Command(async () => await AbrirSalaReunioesView());
             //OpenRHView = new Command(async () => await AbrirRHView());
             //OpenTIView = new Command(() => AbrirTIView());
         }
@@ -30,5 +32,10 @@ namespace Laboratorio_Tiaraju.ViewModel
             await Navigation.PushAsync(new View.CardapioView());
         }
 
+
+        private async Task AbrirSalaReunioesView()
+        {
+            await Navigation.PushAsync(new View.LoginView());
+        }
     }
 }
