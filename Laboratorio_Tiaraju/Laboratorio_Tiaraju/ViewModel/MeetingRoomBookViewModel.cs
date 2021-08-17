@@ -1,5 +1,6 @@
 ﻿using Laboratorio_Tiaraju.FirebaseServices;
 using Laboratorio_Tiaraju.Model;
+using Laboratorio_Tiaraju.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -97,8 +98,7 @@ namespace Laboratorio_Tiaraju.ViewModel
                 this._motivo = value;
                 OnPropertyChanged();
             }
-        }
-        
+        }      
 
         public MeetingRoomBookViewModel()
         {
@@ -107,32 +107,118 @@ namespace Laboratorio_Tiaraju.ViewModel
         }
 
         private async void ReservaCommandAsync()
-        {            
-            MeetingRoom meet = new MeetingRoom();
-            meet.DataReuniao = _dataReuniao.Date.ToString("dd-MM-yyyy");
-            meet.HoraInicioReuniao = _horaInicioReuniao.ToString();
-            meet.HoraFimReuniao = _horaFimReuniao.ToString();
-            meet.QtdePessoas = _qtdePessoas;
-            meet.Colaborador = Preferences.Get("Nome", "default_value");
-            meet.MotivoReuniao = _motivo;
-            meet.StatusAutorizacao = _autorizacao;
+        {
+            bool verificaDados;
 
-            var newMeet = new MeetingRoomServices();
+            //Verificar se a data selecionada maior que dia atual
+            verificaDados = DataHora.VerificaDataReuniao(Convert.ToInt32(_dataReuniao.Day));
 
-            await newMeet.ReservaSalaReuniao(meet);
-        }
+            if (verificaDados)
+            {
 
+                if (verificaDados)
+                {
+                    //Verifica se a Hora Final é Maior ou Igual a Hora Inicial
+                    verificaDados = DataHora.VerificaHoraFimEInicio(_horaInicioReuniao, _horaFimReuniao);
 
-        //public Command ExitCommand { get; set; }
+                    if (verificaDados)
+                    {
+                        MeetingRoom meet = new MeetingRoom();
+                        meet.DataReuniao = _dataReuniao.Date.ToString("dd-MM-yyyy");
+                        meet.HoraInicioReuniao = _horaInicioReuniao.ToString();
+                        meet.HoraFimReuniao = _horaFimReuniao.ToString();
+                        meet.QtdePessoas = _qtdePessoas;
+                        meet.Colaborador = Preferences.Get("Nome", "default_value");
+                        meet.MotivoReuniao = _motivo;
+                        meet.StatusAutorizacao = _autorizacao;
 
-        //public MeetingRoomBookViewModel()
-        //{
-        //    ExitCommand = new Command( () => OpenMainView());
-        //}
+                        var newMeet = new MeetingRoomServices();
 
-        //private void OpenMainView()
-        //{
-        //    App.Current.MainPage = new View.AppShell();
-        //}
+                        await newMeet.ReservaSalaReuniao(meet);
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Info", "A Hora Fim Deve Ser Maior que a Hora Inicial", "Ok");
+                    }
+
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Info", "A Hora Deve Ser Maior ou Igual a Hora Atual.", "Ok");
+                }
+
+            }else
+            {
+                verificaDados = DataHora.VerificaSeDiaIgualHoje(_dataReuniao.Day);
+
+                if (verificaDados)
+                {
+                     int horaInicio = _horaInicioReuniao.Hours;
+                     int horaAtual = DateTime.Now.Hour;
+                    
+                    if(horaInicio == horaAtual)
+                    {
+                        if(_horaInicioReuniao.Minutes < DateTime.Now.Minute)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Info", "A Hora Deve Ser Maior que Hora Atual.", "Ok");
+                        }
+                        else
+                        {
+                            MeetingRoom meet = new MeetingRoom();
+                            meet.DataReuniao = _dataReuniao.Date.ToString("dd-MM-yyyy");
+                            meet.HoraInicioReuniao = _horaInicioReuniao.ToString();
+                            meet.HoraFimReuniao = _horaFimReuniao.ToString();
+                            meet.QtdePessoas = _qtdePessoas;
+                            meet.Colaborador = Preferences.Get("Nome", "default_value");
+                            meet.MotivoReuniao = _motivo;
+                            meet.StatusAutorizacao = _autorizacao;
+
+                            var newMeet = new MeetingRoomServices();
+
+                            await newMeet.ReservaSalaReuniao(meet);
+
+                        }                       
+                    }
+                    else if(horaInicio > horaAtual)
+                    {
+                        if(_horaFimReuniao < _horaInicioReuniao)
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Info", "A Hora Final Deve Ser Maior que Hora Inicial.", "Ok");
+                        }
+                        else
+                        {
+                            MeetingRoom meet = new MeetingRoom();
+                            meet.DataReuniao = _dataReuniao.Date.ToString("dd-MM-yyyy");
+                            meet.HoraInicioReuniao = _horaInicioReuniao.ToString();
+                            meet.HoraFimReuniao = _horaFimReuniao.ToString();
+                            meet.QtdePessoas = _qtdePessoas;
+                            meet.Colaborador = Preferences.Get("Nome", "default_value");
+                            meet.MotivoReuniao = _motivo;
+                            meet.StatusAutorizacao = _autorizacao;
+
+                            var newMeet = new MeetingRoomServices();
+
+                            await newMeet.ReservaSalaReuniao(meet);
+                        }
+                       
+                    }
+                    else if(horaInicio < horaAtual)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Info", "A Hora Inicial Deve Ser Maior que Hora Atual.", "Ok");
+                    }
+                    else if(_horaFimReuniao > _horaInicioReuniao)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Info", "A Hora Final Deve Ser Maior que Hora Inicial.", "Ok");
+                    }
+                }
+                else
+                {
+                    await Application.Current.MainPage.DisplayAlert("Info", "A Data Não Pode Ser Anterior a Data Atual.", "Ok");
+                }
+            }
+
+        }            
+        
+
     }
 }

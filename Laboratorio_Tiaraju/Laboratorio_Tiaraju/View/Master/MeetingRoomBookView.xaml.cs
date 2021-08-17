@@ -19,21 +19,7 @@ namespace Laboratorio_Tiaraju.View.Master
 
             datePicker.Date = DateTime.Now;
            
-        }
-
-        public MeetingRoomBookView(string nome)
-        {
-            InitializeComponent();
-
-            datePicker.Date = DateTime.Now;
-
-        }
-        //public void RecebeNome(string _nome)
-        //{
-        //    lblNome.Text = _nome;
-        //}
-
-        
+        }        
         
     }
 }

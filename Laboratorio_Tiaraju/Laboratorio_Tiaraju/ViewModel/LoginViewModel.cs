@@ -94,14 +94,9 @@ namespace Laboratorio_Tiaraju.ViewModel
                 if (Result)
                 {                    
                     Preferences.Set("Nome", Nome);
-                    //MeetingRoomBookViewModel mrvm = new MeetingRoomBookViewModel();
-                    //mrvm.Colaborador = Nome;
-                    //await navigation.PushAsync(new View.MeetingRoomView());
-                    //Application.Current.MainPage = new NavigationPage(new View.MeetingRoomView());
-                    App.Current.MainPage = new View.Master.MenuView();
                     
-                    //mrbv.RecebeNome(Nome);
-                    
+                    App.Current.MainPage = new View.Master.MenuView();                    
+                                       
                 }
                 else
                 {

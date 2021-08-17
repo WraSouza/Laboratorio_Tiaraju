@@ -18,11 +18,7 @@
                 <Label Text="Informe a Data da Reunião"
                        HorizontalOptions="Center"
                        TextColor="OrangeRed"
-                       FontSize="20"/>
-
-                <Label Text="{Binding Colaborador}"
-                       TextColor="OrangeRed"
-                       FontSize="20"/>
+                       FontSize="20"/>                
 
                 <DatePicker x:Name="datePicker" HorizontalOptions="Center" Date="{Binding DataReuniao}"/>
 
@@ -47,6 +43,7 @@
                        Margin="0,20,0,0"/>
 
                 <Entry Placeholder="Informe Quantidade de Pessoas"
+                       
                        Text="{Binding QtdePessoas}"
                        Keyboard="Numeric"
                        CursorPosition="50"
