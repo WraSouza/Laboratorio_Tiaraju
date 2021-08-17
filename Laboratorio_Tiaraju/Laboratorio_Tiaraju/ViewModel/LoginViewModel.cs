@@ -1,4 +1,6 @@
 ﻿using Laboratorio_Tiaraju.FirebaseServices;
+using Laboratorio_Tiaraju.Model;
+using Laboratorio_Tiaraju.View.Master;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -90,11 +92,16 @@ namespace Laboratorio_Tiaraju.ViewModel
                 Result = await userService.LoginUser(Nome, Senha);
 
                 if (Result)
-                {
+                {                    
                     Preferences.Set("Nome", Nome);
+                    //MeetingRoomBookViewModel mrvm = new MeetingRoomBookViewModel();
+                    //mrvm.Colaborador = Nome;
                     //await navigation.PushAsync(new View.MeetingRoomView());
                     //Application.Current.MainPage = new NavigationPage(new View.MeetingRoomView());
                     App.Current.MainPage = new View.Master.MenuView();
+                    
+                    //mrbv.RecebeNome(Nome);
+                    
                 }
                 else
                 {

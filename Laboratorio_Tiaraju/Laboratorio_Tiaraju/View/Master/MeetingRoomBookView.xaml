@@ -2,13 +2,69 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Reservar Sala de Reunião"
-             
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
              x:Class="Laboratorio_Tiaraju.View.Master.MeetingRoomBookView">
+    
+    <ContentPage.BindingContext>
+        <mvvm:MeetingRoomBookViewModel/>
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Reservar Sala de Reunião"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <Image Source="meetingroombackground.jpg"
+                   Opacity="0.2"/>
+            <StackLayout Margin="10,30,10,0">                
+
+                <Label Text="Informe a Data da Reunião"
+                       HorizontalOptions="Center"
+                       TextColor="OrangeRed"
+                       FontSize="20"/>
+
+                <Label Text="{Binding Colaborador}"
+                       TextColor="OrangeRed"
+                       FontSize="20"/>
+
+                <DatePicker x:Name="datePicker" HorizontalOptions="Center" Date="{Binding DataReuniao}"/>
+
+                <StackLayout Spacing="35" Margin="0,20,0,0" Orientation="Horizontal" HorizontalOptions="Center">
+                    <StackLayout>
+                        <Label Text="Hora Inicial"
+                               TextColor="OrangeRed"/>
+                        <TimePicker Time="{Binding HoraInicioReuniao}"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <Label Text="Hora Final"
+                               TextColor="OrangeRed"/>
+                        <TimePicker Time="{Binding HoraFimReuniao}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <Label Text="Informe Quantidade de Pessoas"
+                       HorizontalOptions="Center"
+                       TextColor="OrangeRed"
+                       FontSize="15"
+                       Margin="0,20,0,0"/>
+
+                <Entry Placeholder="Informe Quantidade de Pessoas"
+                       Text="{Binding QtdePessoas}"
+                       Keyboard="Numeric"
+                       CursorPosition="50"
+                       Margin="0,10,0,0"                       
+                       HorizontalOptions="Center"/>
+
+                <Entry Placeholder="Informe Descrição da Reunião"
+                       Text="{Binding MotivoReuniao}"/>
+
+                <Button Text="Solicitar"                       
+                        BackgroundColor="OrangeRed"
+                        Margin="10,100,10,0"
+                        TextColor="White"
+                        CornerRadius="15"
+                        Command="{Binding SolicitaReservaCommand}"/>              
+
+
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

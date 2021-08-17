@@ -138,10 +138,13 @@
     <Content Include="home.png" />
     <Content Include="loginLogo.jpg" />
     <Content Include="logotiaraju.jpg" />
+    <Content Include="logout.png" />
+    <Content Include="meeting.png" />
     <Content Include="meetingroomlogo.jpg" />
     <Content Include="notes.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="rhicon.png" />
+    <Content Include="schedule.png" />
     <Content Include="tiicon.png" />
     <Content Include="virus.png" />
   </ItemGroup>

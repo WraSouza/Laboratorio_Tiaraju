@@ -6,16 +6,25 @@
              x:Class="Laboratorio_Tiaraju.View.Master.MenuView">
 
     <FlyoutPage.BindingContext>
-        <mvvm:MeetingRoomBookViewModel/>
-    </FlyoutPage.BindingContext>
-    
+        <mvvm:MenuViewModel/>
+    </FlyoutPage.BindingContext>    
 
     <FlyoutPage.Flyout>
         <ContentPage Title="Menu">
             <StackLayout BackgroundColor="White">
-                <Button Text="Reservar Sala de Reunião"
+                <Button Text="Reservar Sala de Reunião"                        
+                        HorizontalOptions="Start"
+                        ImageSource="meeting.png"
                         BackgroundColor="White"/>
-                <Button Text="Sair"
+                
+                <Button Text="Horários Reservados"
+                        HorizontalOptions="Start"
+                        ImageSource="schedule.png"
+                        BackgroundColor="White"/>
+                
+                <Button Text="Sair"                        
+                        HorizontalOptions="Start"
+                        ImageSource="logout.png"
                         Command="{Binding ExitCommand}"
                         BackgroundColor="White"/>
             </StackLayout>
