@@ -18,8 +18,14 @@ namespace Laboratorio_Tiaraju.View.Master
             InitializeComponent();
 
             datePicker.Date = DateTime.Now;
-            Console.Write("OK");
-        }        
-        
+            
+        }
+
+        private async void buscarHorariosAgendados(object sender, EventArgs e)
+        {
+            MeetingRoomServices mrs = new MeetingRoomServices();
+
+            collectionview.ItemsSource = await mrs.GetBooks(datePicker.Date);
+        }
     }
 }

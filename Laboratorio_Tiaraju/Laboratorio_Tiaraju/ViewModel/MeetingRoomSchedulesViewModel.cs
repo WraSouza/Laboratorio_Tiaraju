@@ -101,15 +101,24 @@ namespace Laboratorio_Tiaraju.ViewModel
 
         public MeetingRoomSchedulesViewModel()
         {
-            VerificaReservaCommand = new Command( async () => await BuscaReservasAgendadas());
+            VerificaReservaCommand = new Command( () => BuscaReservasAgendadas());
         }
 
-        private async Task<List<MeetingRoom>> BuscaReservasAgendadas()
+        private async void BuscaReservasAgendadas()
         {
+            MeetingRoom newMeet = new MeetingRoom();
             MeetingRoomServices meetingroom = new MeetingRoomServices();
-            var horariosAgendados = await meetingroom.GetBooks(DataSelecionada);
-            
-            return horariosAgendados;
+            List<MeetingRoom> horariosAgendados = await meetingroom.GetBooks(DataSelecionada);
+
+            int qtde = horariosAgendados.Count;            
+
+            for(int i=0; i < qtde; i++)
+            {
+                this.Colaborador = horariosAgendados[i].Colaborador;
+                newMeet.Colaborador = horariosAgendados[i].Colaborador;
+            }
+
+            //return newMeet;
         }
     }
 }

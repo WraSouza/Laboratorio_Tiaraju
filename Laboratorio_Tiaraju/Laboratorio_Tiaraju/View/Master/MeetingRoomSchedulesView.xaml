@@ -24,20 +24,40 @@
             <Button Text="Pesquisar"
                     Margin="10,0,10,0"
                     TextColor="White"
-                    Command="{Binding VerificaReservaCommand}"
-                    BackgroundColor="OrangeRed"/>
+                    Clicked="buscarHorariosAgendados"
+                    BackgroundColor="OrangeRed"/>     
+            
 
-            <Label Text="{Binding Colaborador}"/>
-
-            <CollectionView x:Name="collectionview" ItemsLayout="VerticalList">
+            <CollectionView x:Name="collectionview" Margin="20,0,20,0" ItemsLayout="VerticalList">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
-                            <Label Text="{Binding Colaborador}"
-                                   TextColor="OrangeRed"/>
+                        <Frame CornerRadius="10"
+                               BorderColor="LightGray"
+                               Margin="10,0,10,0">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Colaborador}"
+                                       FontSize="20"
+                                       TextColor="OrangeRed"/>
 
-                            <Label Text="{Binding MotivoReuniao}"/>
-                        </StackLayout>
+                                    
+                                </StackLayout>
+                                <Label Text="{Binding DataReuniao}"/>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Hora Início"
+                                           TextColor="Black"/>
+                                    <Label Text="{Binding HoraInicioReuniao}"/>
+
+                                    <Label Text="Hora Final"
+                                           Margin="30,0,0,0"
+                                           TextColor="Black"/>
+                                </StackLayout>
+                                
+
+                                <Label Text="{Binding MotivoReuniao}"/>
+                            </StackLayout>
+                        </Frame>                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
