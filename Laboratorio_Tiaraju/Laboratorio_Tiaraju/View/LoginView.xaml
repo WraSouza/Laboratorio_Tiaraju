@@ -45,6 +45,7 @@
             </StackLayout>
 
             <Button Text="Acessar"
+                    VerticalOptions="EndAndExpand"
                     TextColor="White"
                     CornerRadius="10"
                     Margin="20,30,20,0"

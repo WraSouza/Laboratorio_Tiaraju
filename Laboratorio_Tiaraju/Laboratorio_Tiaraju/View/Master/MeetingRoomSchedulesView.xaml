@@ -1,14 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Horários Reservados"
-             BackgroundColor="OrangeRed"
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
+             Title="Verificar Horários Reservados"             
              x:Class="Laboratorio_Tiaraju.View.Master.MeetingRoomSchedulesView">
+    
+    <ContentPage.BindingContext>
+        <mvvm:MeetingRoomSchedulesViewModel/>
+    </ContentPage.BindingContext>    
+    
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Horários Reservados"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Selecione a Data Desejada"
+                   FontSize="15"
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="OrangeRed"/>
+
+            <DatePicker x:Name="datePicker"                        
+                        Date="{Binding DataSelecionada}"
+                        HorizontalOptions="Center"/>
+
+            <Button Text="Pesquisar"
+                    Margin="10,0,10,0"
+                    TextColor="White"
+                    Command="{Binding VerificaReservaCommand}"
+                    BackgroundColor="OrangeRed"/>
+
+            <Label Text="{Binding Colaborador}"/>
+
+            <CollectionView x:Name="collectionview" ItemsLayout="VerticalList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding Colaborador}"
+                                   TextColor="OrangeRed"/>
+
+                            <Label Text="{Binding MotivoReuniao}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

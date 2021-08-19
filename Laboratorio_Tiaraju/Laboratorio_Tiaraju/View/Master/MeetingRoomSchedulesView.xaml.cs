@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laboratorio_Tiaraju.FirebaseServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,10 @@ namespace Laboratorio_Tiaraju.View.Master
         public MeetingRoomSchedulesView()
         {
             InitializeComponent();
-        }
+
+            datePicker.Date = DateTime.Now;
+            Console.Write("OK");
+        }        
+        
     }
 }

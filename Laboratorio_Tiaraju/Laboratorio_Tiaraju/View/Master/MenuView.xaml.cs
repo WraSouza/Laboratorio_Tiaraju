@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laboratorio_Tiaraju.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,20 @@ namespace Laboratorio_Tiaraju.View.Master
         public MenuView()
         {
             InitializeComponent();
+
+            BindingContext = new MenuViewModel(Navigation);
+        }
+
+        private void OpenSchedulesView(object sender, EventArgs e)
+        {
+            Detail = new NavigationPage(new View.Master.MeetingRoomSchedulesView());
+            IsPresented = false;
+        }
+
+        private void OpenBookView(object sender, EventArgs e)
+        {
+            Detail = new NavigationPage(new View.Master.MeetingRoomBookView());
+            IsPresented = false;
         }
     }
 }

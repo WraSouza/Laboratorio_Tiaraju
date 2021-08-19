@@ -124,7 +124,7 @@ namespace Laboratorio_Tiaraju.ViewModel
                     if (verificaDados)
                     {
                         MeetingRoom meet = new MeetingRoom();
-                        meet.DataReuniao = _dataReuniao.Date.ToString("dd-MM-yyyy");
+                        meet.DataReuniao = _dataReuniao.Date.Date;
                         meet.HoraInicioReuniao = _horaInicioReuniao.ToString();
                         meet.HoraFimReuniao = _horaFimReuniao.ToString();
                         meet.QtdePessoas = _qtdePessoas;
@@ -160,12 +160,12 @@ namespace Laboratorio_Tiaraju.ViewModel
                     {
                         if(_horaInicioReuniao.Minutes < DateTime.Now.Minute)
                         {
-                            await Application.Current.MainPage.DisplayAlert("Info", "A Hora Deve Ser Maior que Hora Atual.", "Ok");
+                            await Application.Current.MainPage.DisplayAlert("Info", "A Hora Inicial Deve Ser Maior que Hora Atual.", "Ok");
                         }
                         else
                         {
                             MeetingRoom meet = new MeetingRoom();
-                            meet.DataReuniao = _dataReuniao.Date.ToString("dd-MM-yyyy");
+                            meet.DataReuniao = _dataReuniao.Date;
                             meet.HoraInicioReuniao = _horaInicioReuniao.ToString();
                             meet.HoraFimReuniao = _horaFimReuniao.ToString();
                             meet.QtdePessoas = _qtdePessoas;
@@ -188,7 +188,7 @@ namespace Laboratorio_Tiaraju.ViewModel
                         else
                         {
                             MeetingRoom meet = new MeetingRoom();
-                            meet.DataReuniao = _dataReuniao.Date.ToString("dd-MM-yyyy");
+                            meet.DataReuniao = _dataReuniao.Date;
                             meet.HoraInicioReuniao = _horaInicioReuniao.ToString();
                             meet.HoraFimReuniao = _horaFimReuniao.ToString();
                             meet.QtdePessoas = _qtdePessoas;
@@ -217,8 +217,11 @@ namespace Laboratorio_Tiaraju.ViewModel
                 }
             }
 
-        }            
+        }
+
         
+
+
 
     }
 }
