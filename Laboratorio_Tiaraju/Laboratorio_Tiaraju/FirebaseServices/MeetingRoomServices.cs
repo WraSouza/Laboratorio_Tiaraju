@@ -59,5 +59,17 @@ namespace Laboratorio_Tiaraju.FirebaseServices
             return reuniao.Where(item => item.DataReuniao == _dataReuniao).ToList();
         }
 
+        public async Task AutorizaSalaReuniao(MeetingRoom meetingroomdata)
+        {
+            var horarioASerAtualizado = (await firebase
+                .Child("MeetingRoom")
+                .OnceAsync<MeetingRoom>()).Where(item => item.Object.DataReuniao == meetingroomdata.DataReuniao&&item.Object.Colaborador == meetingroomdata.Colaborador);
+
+            await firebase
+                .Child("MeetingRoom")                
+                .PutAsync(new MeetingRoom()
+                { Colaborador = meetingroomdata.Colaborador, DataReuniao = meetingroomdata.DataReuniao, HoraFimReuniao = meetingroomdata.HoraFimReuniao, HoraInicioReuniao = meetingroomdata.HoraInicioReuniao, MotivoReuniao = meetingroomdata.MotivoReuniao, QtdePessoas = meetingroomdata.QtdePessoas, StatusAutorizacao = meetingroomdata.StatusAutorizacao });
+        }
+
     }
     }

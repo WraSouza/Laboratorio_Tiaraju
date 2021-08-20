@@ -95,7 +95,15 @@ namespace Laboratorio_Tiaraju.ViewModel
                 {                    
                     Preferences.Set("Nome", Nome.ToUpper());
                     
-                    App.Current.MainPage = new View.Master.MenuView();                    
+                    if(Nome !="wladimir")
+                    {
+                        App.Current.MainPage = new View.Master.MenuView();
+                    }
+                    else
+                    {
+                        App.Current.MainPage = new View.Menu.MenuView();
+                    }
+                                        
                                        
                 }
                 else
