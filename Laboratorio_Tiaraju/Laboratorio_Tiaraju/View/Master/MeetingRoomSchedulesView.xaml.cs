@@ -1,4 +1,5 @@
 ﻿using Laboratorio_Tiaraju.FirebaseServices;
+using Laboratorio_Tiaraju.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,9 @@ namespace Laboratorio_Tiaraju.View.Master
         {
             MeetingRoomServices mrs = new MeetingRoomServices();
 
-            collectionview.ItemsSource = await mrs.GetBooks(datePicker.Date);
+            string dataAtual = datePicker.Date.ToString("dd-MM-yyyy");
+
+            collectionview.ItemsSource = await mrs.ReservasPorData(dataAtual);           
         }
     }
 }

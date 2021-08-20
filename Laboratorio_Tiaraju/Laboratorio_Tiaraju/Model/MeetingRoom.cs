@@ -6,7 +6,7 @@ namespace Laboratorio_Tiaraju.Model
 {
     public class MeetingRoom
     {
-        public DateTime DataReuniao { get; set; }
+        public string DataReuniao { get; set; }
         public string HoraInicioReuniao { get; set; }
         public string HoraFimReuniao { get; set; }
         public int QtdePessoas { get; set; }

@@ -33,8 +33,8 @@ namespace Laboratorio_Tiaraju.FirebaseServices
                    });
         }
 
-        public async Task<List<MeetingRoom>> GetBooks(DateTime _dataReuniao)
-        {            
+        public async Task<List<MeetingRoom>> GetBooks()
+        {
             return (await firebase.Child("MeetingRoom")
                 .OnceAsync<MeetingRoom>()).Select(item => new MeetingRoom
                 {
@@ -47,6 +47,16 @@ namespace Laboratorio_Tiaraju.FirebaseServices
                     StatusAutorizacao = item.Object.StatusAutorizacao
 
                 }).ToList();
+        }
+
+        public async Task<List<MeetingRoom>> ReservasPorData(string _dataReuniao)
+        {
+            var reuniao = await GetBooks();
+
+            await firebase.Child("MeetingRoom")
+                .OnceAsync<MeetingRoom>();
+
+            return reuniao.Where(item => item.DataReuniao == _dataReuniao).ToList();
         }
 
     }

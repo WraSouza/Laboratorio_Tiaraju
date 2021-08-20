@@ -28,34 +28,71 @@
                     BackgroundColor="OrangeRed"/>     
             
 
-            <CollectionView x:Name="collectionview" Margin="20,0,20,0" ItemsLayout="VerticalList">
+            <CollectionView x:Name="collectionview"                            
+                            Margin="20,0,20,0"
+                            ItemsLayout="VerticalList">
+                
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame CornerRadius="10"
-                               BorderColor="LightGray"
+                        <Frame CornerRadius="10"                               
+                               BorderColor="Black"
                                Margin="10,0,10,0">
+                            
                             <StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding Colaborador}"
-                                       FontSize="20"
-                                       TextColor="OrangeRed"/>
-
-                                    
-                                </StackLayout>
-                                <Label Text="{Binding DataReuniao}"/>
-
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="Hora Início"
-                                           TextColor="Black"/>
-                                    <Label Text="{Binding HoraInicioReuniao}"/>
-
-                                    <Label Text="Hora Final"
-                                           Margin="30,0,0,0"
-                                           TextColor="Black"/>
-                                </StackLayout>
                                 
+                                    <Label Text="Motivo"
+                                       TextColor="Gray"
+                                       FontAttributes="Bold"/>
 
-                                <Label Text="{Binding MotivoReuniao}"/>
+                                    <Label Text="{Binding MotivoReuniao}"
+                                       TextColor="OrangeRed"
+                                       FontSize="20"/>                              
+
+                                <StackLayout Orientation="Horizontal">
+                                    
+                                        <Label Text="Solicitado Por: "
+                                               FontSize="20"
+                                               TextColor="Gray"/>
+
+                                        <Label Text="{Binding Colaborador}"
+                                               TextColor="OrangeRed"
+                                               FontSize="20"/>                                  
+
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Label Text="Data"
+                                               TextColor="Gray"
+                                               FontAttributes="Bold"/>
+                                        <Label Text="{Binding DataReuniao}"/>
+                                    </StackLayout>
+
+                                    <StackLayout Margin="20,0,0,0" HorizontalOptions="CenterAndExpand">
+                                        <Label Text="Hora Inicial"
+                                               TextColor="Gray"
+                                               FontAttributes="Bold"/>
+                                        
+                                        <Label Text="{Binding HoraInicioReuniao}"
+                                               HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+
+                                    <StackLayout Margin="20,0,0,0">
+                                        <Label Text="Hora Final"
+                                               TextColor="Gray"
+                                               FontAttributes="Bold"/>
+                                        <Label Text="{Binding HoraFimReuniao}"
+                                               HorizontalTextAlignment="Center"/>
+                                    </StackLayout>
+                                </StackLayout>
+
+                                <Label Text="Situação"
+                                       TextColor="Gray"
+                                       FontAttributes="Bold"/>
+
+                                <Label Text="{Binding StatusAutorizacao}"
+                                       x:Name="lblSituacao"/>
+
                             </StackLayout>
                         </Frame>                        
                     </DataTemplate>

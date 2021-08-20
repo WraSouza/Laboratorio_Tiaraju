@@ -93,7 +93,7 @@ namespace Laboratorio_Tiaraju.ViewModel
 
                 if (Result)
                 {                    
-                    Preferences.Set("Nome", Nome);
+                    Preferences.Set("Nome", Nome.ToUpper());
                     
                     App.Current.MainPage = new View.Master.MenuView();                    
                                        

@@ -124,7 +124,7 @@ namespace Laboratorio_Tiaraju.ViewModel
                     if (verificaDados)
                     {
                         MeetingRoom meet = new MeetingRoom();
-                        meet.DataReuniao = _dataReuniao.Date.Date;
+                        meet.DataReuniao = _dataReuniao.Date.ToString("dd-MM-yyyy");
                         meet.HoraInicioReuniao = _horaInicioReuniao.ToString();
                         meet.HoraFimReuniao = _horaFimReuniao.ToString();
                         meet.QtdePessoas = _qtdePessoas;
@@ -135,16 +135,18 @@ namespace Laboratorio_Tiaraju.ViewModel
                         var newMeet = new MeetingRoomServices();
 
                         await newMeet.ReservaSalaReuniao(meet);
+
+                        await Application.Current.MainPage.DisplayAlert("Info", "Sua Solicitação Foi Inserida Com Sucesso", "Ok");
                     }
                     else
                     {
-                        await Application.Current.MainPage.DisplayAlert("Info", "A Hora Fim Deve Ser Maior que a Hora Inicial", "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Erro", "A Hora Fim Deve Ser Maior que a Hora Inicial", "Ok");
                     }
 
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Info", "A Hora Deve Ser Maior ou Igual a Hora Atual.", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Erro", "A Hora Deve Ser Maior ou Igual a Hora Atual.", "Ok");
                 }
 
             }else
@@ -160,12 +162,12 @@ namespace Laboratorio_Tiaraju.ViewModel
                     {
                         if(_horaInicioReuniao.Minutes < DateTime.Now.Minute)
                         {
-                            await Application.Current.MainPage.DisplayAlert("Info", "A Hora Inicial Deve Ser Maior que Hora Atual.", "Ok");
+                            await Application.Current.MainPage.DisplayAlert("Erro", "A Hora Inicial Deve Ser Maior que Hora Atual.", "Ok");
                         }
                         else
                         {
                             MeetingRoom meet = new MeetingRoom();
-                            meet.DataReuniao = _dataReuniao.Date;
+                            meet.DataReuniao = _dataReuniao.Date.ToString("dd-MM-yyyy");
                             meet.HoraInicioReuniao = _horaInicioReuniao.ToString();
                             meet.HoraFimReuniao = _horaFimReuniao.ToString();
                             meet.QtdePessoas = _qtdePessoas;
@@ -177,18 +179,19 @@ namespace Laboratorio_Tiaraju.ViewModel
 
                             await newMeet.ReservaSalaReuniao(meet);
 
+                            await Application.Current.MainPage.DisplayAlert("Info", "Sua Solicitação Foi Inserida Com Sucesso", "Ok");
                         }                       
                     }
                     else if(horaInicio > horaAtual)
                     {
                         if(_horaFimReuniao < _horaInicioReuniao)
                         {
-                            await Application.Current.MainPage.DisplayAlert("Info", "A Hora Final Deve Ser Maior que Hora Inicial.", "Ok");
+                            await Application.Current.MainPage.DisplayAlert("Erro", "A Hora Final Deve Ser Maior que Hora Inicial.", "Ok");
                         }
                         else
                         {
                             MeetingRoom meet = new MeetingRoom();
-                            meet.DataReuniao = _dataReuniao.Date;
+                            meet.DataReuniao = _dataReuniao.Date.ToString("dd-MM-yyyy");
                             meet.HoraInicioReuniao = _horaInicioReuniao.ToString();
                             meet.HoraFimReuniao = _horaFimReuniao.ToString();
                             meet.QtdePessoas = _qtdePessoas;
@@ -199,21 +202,23 @@ namespace Laboratorio_Tiaraju.ViewModel
                             var newMeet = new MeetingRoomServices();
 
                             await newMeet.ReservaSalaReuniao(meet);
+
+                            await Application.Current.MainPage.DisplayAlert("Info", "Sua Solicitação Foi Inserida Com Sucesso", "Ok");
                         }
                        
                     }
                     else if(horaInicio < horaAtual)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Info", "A Hora Inicial Deve Ser Maior que Hora Atual.", "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Erro", "A Hora Inicial Deve Ser Maior que Hora Atual.", "Ok");
                     }
                     else if(_horaFimReuniao > _horaInicioReuniao)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Info", "A Hora Final Deve Ser Maior que Hora Inicial.", "Ok");
+                        await Application.Current.MainPage.DisplayAlert("Erro", "A Hora Final Deve Ser Maior que Hora Inicial.", "Ok");
                     }
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Info", "A Data Não Pode Ser Anterior a Data Atual.", "Ok");
+                    await Application.Current.MainPage.DisplayAlert("Erro", "A Data Não Pode Ser Anterior a Data Atual.", "Ok");
                 }
             }
 
