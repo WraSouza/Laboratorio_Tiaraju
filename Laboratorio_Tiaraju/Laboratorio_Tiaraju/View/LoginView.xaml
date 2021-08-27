@@ -37,11 +37,14 @@
                 <Entry Text="{Binding Nome}" Placeholder="Informe Usuário"/>
 
                 <Label Text="Senha"
+                       Margin="0,30,0,0"
                    TextColor="#006600"
                    FontSize="20"
                    FontAttributes="Bold"/>
 
-                <Entry Text="{Binding Senha}" Placeholder="Informe Senha" IsPassword="True"/>
+                <Entry Text="{Binding Senha}"                       
+                       Placeholder="Informe Senha"
+                       IsPassword="True"/>
             </StackLayout>
 
             <Button Text="Acessar"

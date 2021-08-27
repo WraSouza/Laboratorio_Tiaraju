@@ -10,7 +10,8 @@ namespace Laboratorio_Tiaraju
         {
             InitializeComponent();
 
-            MainPage = new View.AppShell();
+            //MainPage = new View.AppShell();
+            MainPage = new View.LoginView();
         }
 
         protected override void OnStart()

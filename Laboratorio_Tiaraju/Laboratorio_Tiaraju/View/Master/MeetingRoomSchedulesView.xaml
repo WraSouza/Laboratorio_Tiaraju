@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
-             Title="Verificar Horários Reservados"             
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"     
+             xmlns:behaviors="http://xamarin.com/schemas/2020/toolkit"
+             Title="Horários Reservados"             
              x:Class="Laboratorio_Tiaraju.View.Master.MeetingRoomSchedulesView">
     
     <ContentPage.BindingContext>
@@ -26,10 +27,125 @@
                     CornerRadius="10"
                     TextColor="White"
                     Clicked="buscarHorariosAgendados"
-                    BackgroundColor="OrangeRed"/>     
+                    BackgroundColor="OrangeRed"/>
+
+            <CollectionView x:Name="collectionview"
+                            Margin="10,0,10,0"
+                            ItemsLayout="VerticalList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="Gainsboro"
+                               Margin="5,0,5,0">
+                            <behaviors:Expander>
+                                <behaviors:Expander.Header>
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="Motivo"
+                                                   TextColor="Gray"
+                                                   FontAttributes="Bold"/>
+
+                                            <Image Source="next.png"
+                                                   HorizontalOptions="EndAndExpand">
+                                                <Image.Triggers>
+                                                    <DataTrigger TargetType="Image"
+                                                         Binding="{Binding Source={RelativeSource AncestorType={x:Type behaviors:Expander}}, Path=IsExpanded}"
+                                                         Value="True">
+                                                        <Setter Property="Source" Value="downarrow.png" />
+                                                    </DataTrigger>
+                                                </Image.Triggers>
+                                            </Image>
+                                        </StackLayout>                                      
+
+                                        <Label Text="{Binding MotivoReuniao}"
+                                               TextColor="OrangeRed"
+                                               FontSize="20"/>
+
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout>
+                                                <Label Text="Data"
+                                               TextColor="Gray"
+                                               FontAttributes="Bold"/>
+                                                <Label Text="{Binding DataReuniao}"/>
+                                            </StackLayout>
+
+                                            <StackLayout Margin="20,0,0,0" HorizontalOptions="CenterAndExpand">
+                                                <Label Text="Hora Inicial"
+                                               TextColor="Gray"
+                                               FontAttributes="Bold"/>
+
+                                                <Label Text="{Binding HoraInicioReuniao}"
+                                               HorizontalTextAlignment="Center"/>
+                                            </StackLayout>
+
+                                            <StackLayout Margin="20,0,0,0">
+                                                <Label Text="Hora Final"
+                                               TextColor="Gray"
+                                               FontAttributes="Bold"/>
+                                                <Label Text="{Binding HoraFimReuniao}"
+                                               HorizontalTextAlignment="Center"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </behaviors:Expander.Header>
+
+                                <behaviors:Expander.ContentTemplate>
+                                    <DataTemplate>
+                                        <StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+
+                                            <Label Text="Solicitado Por: "
+                                               FontSize="20"
+                                               TextColor="Gray"/>
+
+                                            <Label Text="{Binding Colaborador}"
+                                               TextColor="OrangeRed"
+                                               FontSize="20"/>
+
+                                        </StackLayout>
+
+                                        <!--<StackLayout Orientation="Horizontal">
+                                            <StackLayout>
+                                                <Label Text="Data"
+                                               TextColor="Gray"
+                                               FontAttributes="Bold"/>
+                                                <Label Text="{Binding DataReuniao}"/>
+                                            </StackLayout>
+
+                                            <StackLayout Margin="20,0,0,0" HorizontalOptions="CenterAndExpand">
+                                                <Label Text="Hora Inicial"
+                                               TextColor="Gray"
+                                               FontAttributes="Bold"/>
+
+                                                <Label Text="{Binding HoraInicioReuniao}"
+                                               HorizontalTextAlignment="Center"/>
+                                            </StackLayout>
+
+                                            <StackLayout Margin="20,0,0,0">
+                                                <Label Text="Hora Final"
+                                               TextColor="Gray"
+                                               FontAttributes="Bold"/>
+                                                <Label Text="{Binding HoraFimReuniao}"
+                                               HorizontalTextAlignment="Center"/>
+                                            </StackLayout>
+                                        </StackLayout>-->
+
+                                        <Label Text="Situação"
+                                       TextColor="Gray"
+                                       FontAttributes="Bold"/>
+
+                                        <Label Text="{Binding StatusAutorizacao}"
+                                       x:Name="lblSituacao"/>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </behaviors:Expander.ContentTemplate>
+                            </behaviors:Expander>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
             
 
-            <CollectionView x:Name="collectionview"                            
+            <!--<CollectionView x:Name="collectionview"                            
                             Margin="10,0,10,0"
                             ItemsLayout="VerticalList">
                 
@@ -98,7 +214,7 @@
                         </Frame>                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-            </CollectionView>
+            </CollectionView>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

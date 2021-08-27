@@ -15,8 +15,7 @@ namespace Laboratorio_Tiaraju.ViewModel
         private string _Nome;
         private string _Senha;
         private bool _Result;
-        private bool _IsBusy;
-        //private INavigation navigation { get; set; }
+        private bool _IsBusy;       
 
         public Command LoginCommand { get; set; }
 
@@ -101,7 +100,8 @@ namespace Laboratorio_Tiaraju.ViewModel
                     }
                     else
                     {
-                        App.Current.MainPage = new View.Menu.MenuView();
+                        App.Current.MainPage = new View.AppShell();
+                        //App.Current.MainPage = new View.Menu.MenuView();
                     }
                                         
                                        
