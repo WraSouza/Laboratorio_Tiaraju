@@ -29,6 +29,7 @@
                         ImageSource="logout.png"
                         Command="{Binding ExitCommand}"
                         BackgroundColor="White"/>
+                
             </StackLayout>
         </ContentPage>
     </FlyoutPage.Flyout>

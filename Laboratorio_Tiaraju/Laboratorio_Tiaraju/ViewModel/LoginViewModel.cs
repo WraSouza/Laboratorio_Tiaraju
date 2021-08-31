@@ -93,18 +93,23 @@ namespace Laboratorio_Tiaraju.ViewModel
                 if (Result)
                 {                    
                     Preferences.Set("Nome", Nome.ToUpper());
-                    
-                    if(Nome !="wladimir")
-                    {
-                        App.Current.MainPage = new View.Master.MenuView();
-                    }
-                    else
-                    {
-                        App.Current.MainPage = new View.AppShell();
-                        //App.Current.MainPage = new View.Menu.MenuView();
-                    }
-                                        
-                                       
+
+                    string responsabilidade = await userService.GetUserResponsability(Nome);
+
+                    Preferences.Set("Responsabilidade", responsabilidade);
+
+                    App.Current.MainPage = new View.AppShell();
+
+                    //if(responsabilidade == "responsavel")
+                    //{
+                    //    App.Current.MainPage = new View.Master.MenuView();
+                    //}
+                    //else
+                    //{
+                    //    App.Current.MainPage = new View.AppShell();
+                    //    //App.Current.MainPage = new View.Menu.MenuView();
+                    //}
+
                 }
                 else
                 {

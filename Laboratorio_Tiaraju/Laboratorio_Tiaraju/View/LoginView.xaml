@@ -10,7 +10,7 @@
     </ContentPage.BindingContext>    
     
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="White">
             <Image Source="logotiaraju.jpg"/>
 
             <StackLayout Margin="20,0,20,0">
@@ -30,17 +30,18 @@
                 </Image>
 
                 <Label Text="Usuário"
-                   TextColor="#006600"
-                   FontSize="20"
-                   FontAttributes="Bold"/>
+                       TextColor="#006600"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
 
-                <Entry Text="{Binding Nome}" Placeholder="Informe Usuário"/>
+                <Entry Text="{Binding Nome}"
+                       Placeholder="Informe Usuário"/>
 
                 <Label Text="Senha"
                        Margin="0,30,0,0"
-                   TextColor="#006600"
-                   FontSize="20"
-                   FontAttributes="Bold"/>
+                       TextColor="#006600"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
 
                 <Entry Text="{Binding Senha}"                       
                        Placeholder="Informe Senha"

@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace Laboratorio_Tiaraju.FirebaseServices
 {
     public class UserServices
     {
         FirebaseClient firebase;
+        //string Responsabilidade = "responsavel";
 
         public UserServices()
         {
@@ -19,13 +21,25 @@ namespace Laboratorio_Tiaraju.FirebaseServices
 
         public async Task<bool> LoginUser(string name, string passwd)
         {
+            //Preferences.Set("Responsabilidade", Responsabilidade);
             var user = (await firebase.Child("Usuario")
                 .OnceAsync<Usuario>())
                 .Where(u => u.Object.Nome == name)
-                .Where(u => u.Object.Senha == passwd)
+                .Where(u => u.Object.Senha == passwd)                
                 .FirstOrDefault();
+           
 
             return (user != null);
+        }
+
+        public async Task<string> GetUserResponsability(string name)
+        {
+            var user = (await firebase.Child("Usuario")
+               .OnceAsync<Usuario>())
+               .Where(u => u.Object.Nome == name)               
+               .FirstOrDefault();
+
+            return user.Object.Responsabilidade;
         }
     }
 }

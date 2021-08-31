@@ -12,16 +12,23 @@
     <FlyoutPage.Flyout>
         <ContentPage Title="Menu">
             <StackLayout BackgroundColor="White">
-                <Button Text="Reservar Sala de Reunião"                        
+
+                <Button Text="Aprovar Solicitações"
+                        ImageSource="approved.png"
                         HorizontalOptions="Start"
-                        ImageSource="meeting.png"
-                        
+                        Clicked="OpenAprovarBooksView"
+                        BackgroundColor="White"/>
+
+                <Button Text="Reservar Sala de Reunião"  
+                        Clicked="OpenMeetingRoomBookView"
+                        HorizontalOptions="Start"
+                        ImageSource="meeting.png"                        
                         BackgroundColor="White"/>
 
                 <Button Text="Horários Reservados"
+                        Clicked="OpenMeetingRoomSchedulesView"
                         HorizontalOptions="Start"
-                        ImageSource="schedule.png"
-                        
+                        ImageSource="schedule.png"                        
                         BackgroundColor="White"/>
 
                 <Button Text="Sair"                        

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Laboratorio_Tiaraju.ViewModel
@@ -13,6 +14,7 @@ namespace Laboratorio_Tiaraju.ViewModel
         public Command OpenCardapioView { get; set; }
         public Command OpenMeetingRoomView { get; set; }
         public INavigation Navigation { get; set; }
+        public string Responsability { get; set; }
 
         public MainViewModel()
         {
@@ -32,11 +34,18 @@ namespace Laboratorio_Tiaraju.ViewModel
             await Navigation.PushAsync(new View.CardapioView());
         }
 
-
         private void AbrirSalaReunioesView()
         {
-            App.Current.MainPage = new View.Master.MenuView();
-            //await Navigation.PushAsync(new View.Master.MenuView());
+            Responsability = Preferences.Get("Responsabilidade", "default_value");
+            if(Responsability == "solicitante")
+            {
+                App.Current.MainPage = new View.Master.MenuView();
+
+            }else if(Responsability == "responsavel")
+            {
+                App.Current.MainPage = new View.Menu.MenuView();
+            }            
+           
         }
     }
 }

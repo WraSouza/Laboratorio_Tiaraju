@@ -9,5 +9,6 @@ namespace Laboratorio_Tiaraju.Model
         public string Nome { get; set; }
         public string Senha { get; set; }
         public string Empresa { get; set; }
+        public string Responsabilidade { get; set; }
     }
 }
