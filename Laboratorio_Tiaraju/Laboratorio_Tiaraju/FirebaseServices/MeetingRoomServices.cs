@@ -69,7 +69,7 @@ namespace Laboratorio_Tiaraju.FirebaseServices
                 .Child("MeetingRoom")                
                 .PutAsync(new MeetingRoom()
                 { Colaborador = meetingroomdata.Colaborador, DataReuniao = meetingroomdata.DataReuniao, HoraFimReuniao = meetingroomdata.HoraFimReuniao, HoraInicioReuniao = meetingroomdata.HoraInicioReuniao, MotivoReuniao = meetingroomdata.MotivoReuniao, QtdePessoas = meetingroomdata.QtdePessoas, StatusAutorizacao = meetingroomdata.StatusAutorizacao });
-        }
+        }        
 
     }
     }

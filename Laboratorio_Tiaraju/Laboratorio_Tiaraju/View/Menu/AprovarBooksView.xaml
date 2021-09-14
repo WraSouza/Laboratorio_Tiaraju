@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Horários A Serem Aprovados"
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
+             x:Name="MyPage"
+             Title="Horários Aguardando Aprovação"
              x:Class="Laboratorio_Tiaraju.View.Menu.AprovarBooksView">
+
+    <ContentPage.BindingContext>
+        <mvvm:AprovarBooksViewModel/>
+    </ContentPage.BindingContext>
     
     <ContentPage.Content>
         <StackLayout>
@@ -22,7 +28,8 @@
                     Clicked="buscarHorariosAgendados"
                     BackgroundColor="Green"/>
             
-            <CollectionView x:Name="collectionview"                            
+            <CollectionView x:Name="collectionview"  
+                            
                             Margin="10,0,10,0"
                             ItemsLayout="VerticalList">
 
@@ -32,25 +39,33 @@
                                BorderColor="Black"
                                Margin="10,0,10,0">
 
+                            <!--<Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Path=BindingContext.AprovarReservaCommand, Source={x:Reference collectionview}}"/>
+                            </Frame.GestureRecognizers>-->
+
                             <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AprovarReservaCommand, Source={x:Reference collectionview}}"/>
+                                </StackLayout.GestureRecognizers>
 
                                 <Label Text="Motivo"
                                        TextColor="Gray"
                                        FontAttributes="Bold"/>
 
-                                <Label Text="{Binding MotivoReuniao}"
+                                <Label Text="{Binding MotivoReuniao}"   
+                                       x:Name="lblMotivoReuniao"
                                        TextColor="OrangeRed"
                                        FontSize="20"/>
 
                                 <StackLayout Orientation="Horizontal">
 
                                     <Label Text="Solicitado Por: "
-                                               FontSize="20"
-                                               TextColor="Gray"/>
+                                           FontSize="20"
+                                           TextColor="Gray"/>
 
                                     <Label Text="{Binding Colaborador}"
-                                               TextColor="OrangeRed"
-                                               FontSize="20"/>
+                                           TextColor="OrangeRed"
+                                           FontSize="20"/>
 
                                 </StackLayout>
 
@@ -75,7 +90,8 @@
                                         <Label Text="Hora Final"
                                                TextColor="Gray"
                                                FontAttributes="Bold"/>
-                                        <Label Text="{Binding HoraFimReuniao}"
+                                        
+                                        <Label Text="{Binding HoraFimReuniao}"                                               
                                                HorizontalTextAlignment="Center"/>
                                     </StackLayout>
                                 </StackLayout>
@@ -88,9 +104,12 @@
                                        x:Name="lblSituacao"/>
 
                                 <Button Text="Aprovar"
+                                        Command="{Binding Path=BindingContext.AprovarReservaCommand, Source={x:Reference collectionview}}"
+                                        CommandParameter="{Binding .}"
                                         CornerRadius="10"
                                         TextColor="White"
                                         BackgroundColor="Green"/>
+                                
                             </StackLayout>
                         </Frame>
                     </DataTemplate>

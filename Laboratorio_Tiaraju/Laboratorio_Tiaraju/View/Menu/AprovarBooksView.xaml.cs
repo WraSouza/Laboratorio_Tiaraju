@@ -26,5 +26,6 @@ namespace Laboratorio_Tiaraju.View.Menu
 
             collectionview.ItemsSource = await mrs.ReservasPorData(dataAtual);
         }
+        
     }
 }

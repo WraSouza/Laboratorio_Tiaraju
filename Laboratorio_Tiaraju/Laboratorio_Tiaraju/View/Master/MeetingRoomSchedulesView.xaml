@@ -134,7 +134,7 @@
                                        FontAttributes="Bold"/>
 
                                         <Label Text="{Binding StatusAutorizacao}"
-                                       x:Name="lblSituacao"/>
+                                               x:Name="lblSituacao"/>
                                         </StackLayout>
                                     </DataTemplate>
                                 </behaviors:Expander.ContentTemplate>
