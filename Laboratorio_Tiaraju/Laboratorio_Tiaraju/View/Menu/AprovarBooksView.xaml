@@ -28,8 +28,9 @@
                     Clicked="buscarHorariosAgendados"
                     BackgroundColor="Green"/>
             
-            <CollectionView x:Name="collectionview"  
-                            
+            <CollectionView x:Name="collectionview"                            
+                            SelectionMode="Single"                            
+                            SelectionChangedCommand="{Binding AprovarReservaCommand}"                              
                             Margin="10,0,10,0"
                             ItemsLayout="VerticalList">
 
@@ -39,21 +40,22 @@
                                BorderColor="Black"
                                Margin="10,0,10,0">
 
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.AprovarReservaCommand,Source={x:Reference collectionview}}"
+                                                      CommandParameter="{Binding}"/>
+                            </Frame.GestureRecognizers>
+
                             <!--<Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Path=BindingContext.AprovarReservaCommand, Source={x:Reference collectionview}}"/>
                             </Frame.GestureRecognizers>-->
 
-                            <StackLayout>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.AprovarReservaCommand, Source={x:Reference collectionview}}"/>
-                                </StackLayout.GestureRecognizers>
+                            <StackLayout>                               
 
                                 <Label Text="Motivo"
                                        TextColor="Gray"
                                        FontAttributes="Bold"/>
 
-                                <Label Text="{Binding MotivoReuniao}"   
-                                       x:Name="lblMotivoReuniao"
+                                <Label Text="{Binding MotivoReuniao}"                                        
                                        TextColor="OrangeRed"
                                        FontSize="20"/>
 
@@ -109,7 +111,9 @@
                                         CornerRadius="10"
                                         TextColor="White"
                                         BackgroundColor="Green"/>
-                                
+
+                                <Button Text="Rejeitar"/>
+
                             </StackLayout>
                         </Frame>
                     </DataTemplate>

@@ -1,4 +1,5 @@
-﻿using Laboratorio_Tiaraju.Model;
+﻿using Laboratorio_Tiaraju.FirebaseServices;
+using Laboratorio_Tiaraju.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,8 @@ namespace Laboratorio_Tiaraju.ViewModel
         private int _qtdePessoas;
         private string _colaborador;
         private string _motivo;
-        //private string _autorizacao = "Pendente";
+        private string _autorizacao = "Autorizado";
+        MeetingRoomServices mrs = new MeetingRoomServices();
 
         public Command AprovarReservaCommand { get; set; }
 
@@ -99,20 +101,27 @@ namespace Laboratorio_Tiaraju.ViewModel
 
         public AprovarBooksViewModel()
         {
-            AprovarReservaCommand = new Command( () => AprovarCommandAsync());
+            AprovarReservaCommand = new Command<MeetingRoom>( (model) => AprovarCommandAsync(model));
         }
 
-        private void AprovarCommandAsync()
+        private void AprovarCommandAsync(MeetingRoom model)
         {
-            MeetingRoom meet = new MeetingRoom();
+            if (model is null)
+                return;
 
-            //string hora = HoraFimReuniao.ToString();
-            //string motivo = MotivoReuniao;
+            MeetingRoom meet = new MeetingRoom();             
 
-            meet.HoraInicioReuniao = HoraInicioReuniao.ToString();
-            meet.HoraFimReuniao = HoraFimReuniao.Hours.ToString();
-            meet.QtdePessoas = _qtdePessoas;
-            meet.MotivoReuniao = MotivoReuniao;
+            meet.HoraInicioReuniao = model.HoraInicioReuniao.ToString();
+            meet.HoraFimReuniao = model.HoraFimReuniao.ToString();
+            meet.QtdePessoas = model.QtdePessoas;
+            meet.MotivoReuniao = model.MotivoReuniao;
+            meet.Colaborador = model.Colaborador;
+            meet.StatusAutorizacao = _autorizacao;
+            meet.DataReuniao = model.DataReuniao.ToString();
+
+            var autoriza = mrs.AutorizaSalaReuniao(meet);
+
+            mrs.ReservasPorData(model.DataReuniao);
         }
     }
 }
