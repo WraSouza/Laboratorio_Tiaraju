@@ -1,5 +1,6 @@
 ﻿using Laboratorio_Tiaraju.FirebaseServices;
 using Laboratorio_Tiaraju.Model;
+using Laboratorio_Tiaraju.View.Menu;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +21,7 @@ namespace Laboratorio_Tiaraju.ViewModel
         MeetingRoomServices mrs = new MeetingRoomServices();
 
         public Command AprovarReservaCommand { get; set; }
+        public Command RejeitarReservaCommand { get; set; }
 
         public DateTime DataReuniao
         {
@@ -102,12 +104,15 @@ namespace Laboratorio_Tiaraju.ViewModel
         public AprovarBooksViewModel()
         {
             AprovarReservaCommand = new Command<MeetingRoom>( (model) => AprovarCommandAsync(model));
+            RejeitarReservaCommand = new Command<MeetingRoom>((model) => RejeitarCommandAsync(model));
         }
 
-        private void AprovarCommandAsync(MeetingRoom model)
+        private async void AprovarCommandAsync(MeetingRoom model)
         {
             if (model is null)
+            {
                 return;
+            }
 
             MeetingRoom meet = new MeetingRoom();             
 
@@ -119,9 +124,33 @@ namespace Laboratorio_Tiaraju.ViewModel
             meet.StatusAutorizacao = _autorizacao;
             meet.DataReuniao = model.DataReuniao.ToString();
 
-            var autoriza = mrs.AutorizaSalaReuniao(meet);
+            var autoriza = mrs.AutorizarSalaReuniao(meet);
 
-            mrs.ReservasPorData(model.DataReuniao);
+            await Application.Current.MainPage.DisplayAlert("Sucesso", "Solicitação Autorizada Com Sucesso", "OK");
+
+            
+        }
+
+        private async void RejeitarCommandAsync(MeetingRoom model)
+        {
+            if (model is null)
+            {
+                return;
+            }               
+
+            MeetingRoom meet = new MeetingRoom();
+
+            meet.HoraInicioReuniao = model.HoraInicioReuniao.ToString();
+            meet.HoraFimReuniao = model.HoraFimReuniao.ToString();
+            meet.QtdePessoas = model.QtdePessoas;
+            meet.MotivoReuniao = model.MotivoReuniao;
+            meet.Colaborador = model.Colaborador;
+            meet.StatusAutorizacao = _autorizacao;
+            meet.DataReuniao = model.DataReuniao.ToString();
+
+            var autoriza = mrs.AutorizarSalaReuniao(meet);
+
+           
         }
     }
 }

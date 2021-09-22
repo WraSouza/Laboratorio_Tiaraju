@@ -1,5 +1,6 @@
 ﻿using Laboratorio_Tiaraju.FirebaseServices;
 using Laboratorio_Tiaraju.Model;
+using Laboratorio_Tiaraju.Services;
 using Laboratorio_Tiaraju.View.Master;
 using System;
 using System.Collections.Generic;
@@ -86,35 +87,35 @@ namespace Laboratorio_Tiaraju.ViewModel
 
             try
             {
-                IsBusy = true;
-                var userService = new UserServices();
-                Result = await userService.LoginUser(Nome, Senha);
+                bool verificaConexao = Conectividade.VerificaConectividade();
 
-                if (Result)
-                {                    
-                    Preferences.Set("Nome", Nome.ToUpper());
+                if (verificaConexao)
+                {
+                    IsBusy = true;
+                    var userService = new UserServices();
+                    Result = await userService.LoginUser(Nome, Senha);
 
-                    string responsabilidade = await userService.GetUserResponsability(Nome);
+                    if (Result)
+                    {
+                        Preferences.Set("Nome", Nome.ToUpper());
 
-                    Preferences.Set("Responsabilidade", responsabilidade);
+                        string responsabilidade = await userService.GetUserResponsability(Nome);
 
-                    App.Current.MainPage = new View.AppShell();
+                        Preferences.Set("Responsabilidade", responsabilidade);
 
-                    //if(responsabilidade == "responsavel")
-                    //{
-                    //    App.Current.MainPage = new View.Master.MenuView();
-                    //}
-                    //else
-                    //{
-                    //    App.Current.MainPage = new View.AppShell();
-                    //    //App.Current.MainPage = new View.Menu.MenuView();
-                    //}
+                        App.Current.MainPage = new View.AppShell();
 
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Erro", "Usuário/Senha Inválidos", "OK");
+                    }
                 }
                 else
                 {
-                    await Application.Current.MainPage.DisplayAlert("Erro", "Usuário/Senha Inválidos", "OK");
+                    await Application.Current.MainPage.DisplayAlert("Erro", "Não Foi Possível Verificar Credenciais. Verifique Sua Conexão de Internet.", "OK");
                 }
+                
 
             }
             catch (Exception ex)
