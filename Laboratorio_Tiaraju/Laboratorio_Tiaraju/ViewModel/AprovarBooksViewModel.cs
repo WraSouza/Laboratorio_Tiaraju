@@ -25,78 +25,60 @@ namespace Laboratorio_Tiaraju.ViewModel
 
         public DateTime DataReuniao
         {
-            get
-            {
-                return this._dataReuniao;
-            }
+            get => _dataReuniao;
             set
             {
-                this._dataReuniao = value;
+                _dataReuniao = value;
                 OnPropertyChanged();
             }
         }
 
         public TimeSpan HoraInicioReuniao
         {
-            get
-            {
-                return this._horaInicioReuniao;
-            }
+            get => _horaInicioReuniao;
             set
             {
-                this._horaInicioReuniao = value;
+                _horaInicioReuniao = value;
                 OnPropertyChanged();
             }
         }
 
         public TimeSpan HoraFimReuniao
         {
-            get
-            {
-                return this._horaFimReuniao;
-            }
+            get => _horaFimReuniao;
             set
             {
-                this._horaFimReuniao = value;
+                _horaFimReuniao = value;
                 OnPropertyChanged();
             }
         }
 
         public int QtdePessoas
         {
-            get
-            {
-                return this._qtdePessoas;
-            }
+            get => _qtdePessoas;
             set
             {
-                this._qtdePessoas = value;
+                _qtdePessoas = value;
                 OnPropertyChanged();
             }
         }
 
         public string Colaborador
         {
-            get
-            {
-                return this._colaborador;
-            }
+            get => _colaborador;
             set
             {
-                this._colaborador = value;
+                _colaborador = value;
                 OnPropertyChanged();
             }
         }
 
         public string MotivoReuniao
         {
-            get
-            {
-                return this._motivo;
-            }
+            get => _motivo;
             set
             {
-                this._motivo = value;
+                _motivo = value;
                 OnPropertyChanged();
             }
         }
@@ -124,11 +106,9 @@ namespace Laboratorio_Tiaraju.ViewModel
             meet.StatusAutorizacao = _autorizacao;
             meet.DataReuniao = model.DataReuniao.ToString();
 
-            var autoriza = mrs.AutorizarSalaReuniao(meet);
+            Task<bool> autoriza = mrs.AutorizarSalaReuniao(meet);
 
-            await Application.Current.MainPage.DisplayAlert("Sucesso", "Solicitação Autorizada Com Sucesso", "OK");
-
-            
+            await Application.Current.MainPage.DisplayAlert("Sucesso", "Solicitação Autorizada Com Sucesso", "OK");           
         }
 
         private async void RejeitarCommandAsync(MeetingRoom model)
@@ -136,7 +116,7 @@ namespace Laboratorio_Tiaraju.ViewModel
             if (model is null)
             {
                 return;
-            }               
+            }
 
             MeetingRoom meet = new MeetingRoom();
 
@@ -148,7 +128,7 @@ namespace Laboratorio_Tiaraju.ViewModel
             meet.StatusAutorizacao = _autorizacao;
             meet.DataReuniao = model.DataReuniao.ToString();
 
-            var autoriza = mrs.AutorizarSalaReuniao(meet);
+            bool autoriza = await mrs.AutorizarSalaReuniao(meet);
 
            
         }

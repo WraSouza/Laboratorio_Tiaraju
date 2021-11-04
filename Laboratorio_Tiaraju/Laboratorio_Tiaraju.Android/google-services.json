@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "863074195629",
+    "firebase_url": "https://tiaraju-afa0a-default-rtdb.firebaseio.com",
+    "project_id": "tiaraju-afa0a",
+    "storage_bucket": "tiaraju-afa0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:863074195629:android:c8ffcb8391e5e45f23ce24",
+        "android_client_info": {
+          "package_name": "br.com.laboratoriotiaraju"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "863074195629-lqitiaunnf2ln5v26t93hv82mc41u0t8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiWt4I0LxGfl-rmW2p4qVJ-kMDF38KxSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "863074195629-lqitiaunnf2ln5v26t93hv82mc41u0t8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

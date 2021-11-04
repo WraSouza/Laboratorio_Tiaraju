@@ -10,6 +10,10 @@
         </Tab>
     </FlyoutItem>
 
+    <FlyoutItem Title="Assuntos Regulatórios" Icon="stamp.png">
+        <ShellContent ContentTemplate="{DataTemplate pages:AssuntosRegulatoriosView}"/>
+    </FlyoutItem>
+
     <FlyoutItem Title="RH" Icon="rhicon.png">
         <ShellContent Title="Pauta Fixa" Icon="notes.png" ContentTemplate="{DataTemplate pages:RHView}"/>
         <ShellContent Title="Informativo Covid" Icon="virus.png" ContentTemplate="{DataTemplate pages:InformativoCovidView}"/>
@@ -17,7 +21,7 @@
 
     <FlyoutItem Title="TI" Icon="tiicon.png">
         <ShellContent ContentTemplate="{DataTemplate pages:TIView}"/>
-    </FlyoutItem>
-     
+    </FlyoutItem>  
+
 
 </Shell>

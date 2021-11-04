@@ -61,10 +61,6 @@ namespace Laboratorio_Tiaraju.FirebaseServices
 
         public async Task<bool> AutorizarSalaReuniao(MeetingRoom meetingroomdata)
         {
-            //var horarioASerAtualizado = (await firebase
-            //    .Child("MeetingRoom")
-            //    .OnceAsync<MeetingRoom>()).Where(item => item.Object.DataReuniao == meetingroomdata.DataReuniao&&item.Object.Colaborador == meetingroomdata.Colaborador);
-
             var horarioASerAtualizado = (await firebase
                 .Child("MeetingRoom")
                 .OnceAsync<MeetingRoom>()).Where(item => item.Object.MotivoReuniao == meetingroomdata.MotivoReuniao).FirstOrDefault();

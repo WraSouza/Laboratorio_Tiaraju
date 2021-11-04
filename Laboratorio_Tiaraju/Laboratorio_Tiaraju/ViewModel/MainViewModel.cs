@@ -36,12 +36,13 @@ namespace Laboratorio_Tiaraju.ViewModel
 
         private void AbrirSalaReunioesView()
         {
-            Responsability = Preferences.Get("Responsabilidade", "default_value");
-            if(Responsability == "solicitante")
+            string responsabilidadeUsuario = Preferences.Get("Responsabilidade", "default_value");
+
+            if(responsabilidadeUsuario == "solicitante")
             {
                 App.Current.MainPage = new View.Master.MenuView();
 
-            }else if(Responsability == "responsavel")
+            }else if(responsabilidadeUsuario == "responsavel")
             {
                 App.Current.MainPage = new View.Menu.MenuView();
             }            

@@ -16,32 +16,26 @@ namespace Laboratorio_Tiaraju.ViewModel
         private string _Nome;
         private string _Senha;
         private bool _Result;
-        private bool _IsBusy;       
+        private bool _IsBusy;
 
         public Command LoginCommand { get; set; }
 
         public string Nome
         {
-            get
-            {
-                return this._Nome;
-            }
+            get => _Nome;
             set
             {
-                this._Nome = value;
+                _Nome = value;
                 OnPropertyChanged();
             }
         }
 
         public string Senha
         {
-            get
-            {
-                return this._Senha;
-            }
+            get => _Senha;
             set
             {
-                this._Senha = value;
+                _Senha = value;
                 OnPropertyChanged();
             }
         }
@@ -49,13 +43,10 @@ namespace Laboratorio_Tiaraju.ViewModel
         //Método para verificar se o login foi realizado com sucesso
         public bool Result
         {
-            get
-            {
-                return this._IsBusy;
-            }
+            get => _IsBusy;
             set
             {
-                this._IsBusy = value;
+                _IsBusy = value;
                 OnPropertyChanged();
             }
         }
@@ -63,13 +54,10 @@ namespace Laboratorio_Tiaraju.ViewModel
         //Método para verificar se o login está sendo realizado para evitar concorrência
         public bool IsBusy
         {
-            get
-            {
-                return this._Result;
-            }
+            get => _Result;
             set
             {
-                this._Result = value;
+                _Result = value;
                 OnPropertyChanged();
             }
         }
@@ -97,13 +85,26 @@ namespace Laboratorio_Tiaraju.ViewModel
 
                     if (Result)
                     {
-                        Preferences.Set("Nome", Nome.ToUpper());
+                        Preferences.Set("Nome", Nome.ToUpper());                       
 
                         string responsabilidade = await userService.GetUserResponsability(Nome);
 
-                        Preferences.Set("Responsabilidade", responsabilidade);
+                        string departamento = await userService.GetUserDept(Nome);
 
-                        App.Current.MainPage = new View.AppShell();
+                        string status = await userService.GetUserStatus(Nome);
+
+                        if(status != "ativo")
+                        {
+                            await Application.Current.MainPage.DisplayAlert("Info", "Usuário Sem Autorização de Acesso", "OK");
+                        }
+                        else
+                        {
+                            Preferences.Set("Departamento", departamento);
+
+                            Preferences.Set("Responsabilidade", responsabilidade);
+
+                            Application.Current.MainPage = new View.AppShell();
+                        }
 
                     }
                     else
@@ -115,7 +116,7 @@ namespace Laboratorio_Tiaraju.ViewModel
                 {
                     await Application.Current.MainPage.DisplayAlert("Erro", "Não Foi Possível Verificar Credenciais. Verifique Sua Conexão de Internet.", "OK");
                 }
-                
+
 
             }
             catch (Exception ex)

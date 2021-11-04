@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
              x:Name="MyPage"
+             Visual="Material"
              Title="Horários Aguardando Aprovação"
              x:Class="Laboratorio_Tiaraju.View.Menu.AprovarBooksView">
 
@@ -45,11 +46,7 @@
                                 <TapGestureRecognizer Command="{Binding BindingContext.AprovarReservaCommand,Source={x:Reference collectionview}}"
                                                       CommandParameter="{Binding}"/>
                             </Frame.GestureRecognizers>
-
-                            <!--<Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Path=BindingContext.AprovarReservaCommand, Source={x:Reference collectionview}}"/>
-                            </Frame.GestureRecognizers>-->
-
+                           
                             <StackLayout>
 
                                 <StackLayout Orientation="Horizontal">
@@ -84,12 +81,14 @@
                                     </StackLayout>
 
                                     <StackLayout Margin="20,0,0,0" HorizontalOptions="CenterAndExpand">
+                                        
                                         <Label Text="Hora Inicial"
                                                TextColor="Gray"
                                                FontAttributes="Bold"/>
 
                                         <Label Text="{Binding HoraInicioReuniao}"
                                                HorizontalTextAlignment="Center"/>
+                                        
                                     </StackLayout>
 
                                     <StackLayout Margin="20,0,0,0">
@@ -110,7 +109,8 @@
                                 <Label Text="{Binding StatusAutorizacao}"
                                        x:Name="lblSituacao"/>
 
-                                <Grid>
+                                <Grid RowDefinitions="40">
+                                   
                                     <Button Text="Aprovar"
                                             Command="{Binding Path=BindingContext.AprovarReservaCommand, Source={x:Reference collectionview}}"
                                             CommandParameter="{Binding .}"

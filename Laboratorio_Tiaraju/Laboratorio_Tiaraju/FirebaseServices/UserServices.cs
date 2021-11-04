@@ -21,7 +21,6 @@ namespace Laboratorio_Tiaraju.FirebaseServices
 
         public async Task<bool> LoginUser(string name, string passwd)
         {
-            //Preferences.Set("Responsabilidade", Responsabilidade);
             var user = (await firebase.Child("Usuario")
                 .OnceAsync<Usuario>())
                 .Where(u => u.Object.Nome == name)
@@ -40,6 +39,26 @@ namespace Laboratorio_Tiaraju.FirebaseServices
                .FirstOrDefault();
 
             return user.Object.Responsabilidade;
+        }
+
+        public async Task<string> GetUserDept(string name)
+        {
+            var user = (await firebase.Child("Usuario")
+               .OnceAsync<Usuario>())
+               .Where(u => u.Object.Nome == name)
+               .FirstOrDefault();
+
+            return user.Object.Departamento;
+        }
+
+        public async Task<string> GetUserStatus(string name)
+        {
+            var user = (await firebase.Child("Usuario")
+               .OnceAsync<Usuario>())
+               .Where(u => u.Object.Nome == name)
+               .FirstOrDefault();
+
+            return user.Object.Status;
         }
     }
 }
