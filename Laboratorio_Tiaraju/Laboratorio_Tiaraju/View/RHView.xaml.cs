@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laboratorio_Tiaraju.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace Laboratorio_Tiaraju.View
         public RHView()
         {
             InitializeComponent();
+
+            BindingContext = new RHViewModel(Navigation);
         }
     }
 }

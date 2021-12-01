@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Laboratorio_Tiaraju.View.TrocarSenhaView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel">
+    <ContentPage.BindingContext>
+        <mvvm:TrocarSenhaViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Image Opacity="0.2" Source="changepass.png" />
+            <StackLayout Margin="15,200,15,0">
+                <Label Text="Informar Nova Senha"
+                       TextColor="Black"
+                       FontSize="15"
+                       FontAttributes="Bold"/>
+                <Entry IsPassword="True" Text="{Binding Senha}" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

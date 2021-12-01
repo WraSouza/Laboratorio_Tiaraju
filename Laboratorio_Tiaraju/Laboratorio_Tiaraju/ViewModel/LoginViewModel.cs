@@ -101,9 +101,19 @@ namespace Laboratorio_Tiaraju.ViewModel
                         {
                             Preferences.Set("Departamento", departamento);
 
-                            Preferences.Set("Responsabilidade", responsabilidade);
+                            Preferences.Set("Responsabilidade", responsabilidade);                            
 
-                            Application.Current.MainPage = new View.AppShell();
+                            string senhaNoBanco = await userService.GetUserSenha(Nome);
+                            
+                            if(senhaNoBanco == "1234")
+                            {
+                                 Application.Current.MainPage = new View.TrocarSenhaView();
+                            }
+                            else
+                            {
+                                Application.Current.MainPage = new View.AppShell();
+                            }
+                            
                         }
 
                     }

@@ -60,5 +60,15 @@ namespace Laboratorio_Tiaraju.FirebaseServices
 
             return user.Object.Status;
         }
+
+        public async Task<string> GetUserSenha(string name)
+        {
+            var user = (await firebase.Child("Usuario")
+               .OnceAsync<Usuario>())
+               .Where(u => u.Object.Nome == name)
+               .FirstOrDefault();
+
+            return user.Object.Senha;
+        }
     }
 }

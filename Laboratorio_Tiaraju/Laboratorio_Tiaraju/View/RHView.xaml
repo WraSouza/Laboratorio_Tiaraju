@@ -1,13 +1,99 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="Pauta Fixa"
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
+             Title="RH"
              x:Class="Laboratorio_Tiaraju.View.RHView">
+    <ContentPage.BindingContext>
+        <mvvm:RHViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid ColumnDefinitions="2*,2*" RowDefinitions="2*,2*,2*" Margin="15,20,15,0">
+            <Grid Grid.Column="0" Grid.Row="0">
+                <Image Source="suasinformacoeslogo.jpg"                      
+                       Aspect="Fill"/>
+                <StackLayout>
+                    <Label Text="Informações Pessoais"
+                           FontSize="15"
+                           VerticalOptions="EndAndExpand"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </StackLayout>
+
+            </Grid>
+            
+            <!--Cadastrado de Funcionário-->
+            <Grid Grid.Column="1" Grid.Row="0">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NovoColaboradorView}"/>
+                </Grid.GestureRecognizers>
+                <Image Source="novofuncionariologo.jpg"                      
+                       Aspect="Fill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NovoColaboradorView}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <StackLayout>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NovoColaboradorView}"/>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="Novo Colaborador"
+                           FontSize="15"
+                           VerticalOptions="EndAndExpand"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </StackLayout>
+
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.Row="1">
+                <Image Source="marcarferiaslogo.jpg"                      
+                       Aspect="Fill"/>
+                <StackLayout>
+                    <Label Text="Marcar Ferias"
+                           FontSize="15"
+                           VerticalOptions="EndAndExpand"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </StackLayout>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Image Source="pautafixalogo.jpg"                      
+                       Aspect="Fill"/>
+                <StackLayout>
+                    <Label Text="Pauta Fixa"
+                           FontSize="15"
+                           VerticalOptions="EndAndExpand"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </StackLayout>
+            </Grid>
+
+            <Grid Grid.Column="0" Grid.Row="2">
+                <Image Source="rhinformalogo.jpg"                      
+                       Aspect="Fill"/>
+                <StackLayout>
+                    <Label Text="RH Informa"
+                           FontSize="15"
+                           VerticalOptions="EndAndExpand"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </StackLayout>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="2">
+                <Image Source="bibliotecalogo.jpg"                      
+                       Aspect="Fill"/>
+                <StackLayout>
+                    <Label Text="Biblioteca"
+                           FontSize="15"
+                           VerticalOptions="EndAndExpand"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </StackLayout>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

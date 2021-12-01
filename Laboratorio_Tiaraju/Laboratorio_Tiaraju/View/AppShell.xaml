@@ -15,8 +15,9 @@
     </FlyoutItem>
 
     <FlyoutItem Title="RH" Icon="rhicon.png">
-        <ShellContent Title="Pauta Fixa" Icon="notes.png" ContentTemplate="{DataTemplate pages:RHView}"/>
-        <ShellContent Title="Informativo Covid" Icon="virus.png" ContentTemplate="{DataTemplate pages:InformativoCovidView}"/>
+        <ShellContent ContentTemplate="{DataTemplate pages:RHView}"/>
+        <!--<ShellContent Title="Pauta Fixa" Icon="notes.png" ContentTemplate="{DataTemplate pages:RHView}"/>
+        <ShellContent Title="Informativo Covid" Icon="virus.png" ContentTemplate="{DataTemplate pages:InformativoCovidView}"/>-->
     </FlyoutItem>
 
     <FlyoutItem Title="TI" Icon="tiicon.png">
