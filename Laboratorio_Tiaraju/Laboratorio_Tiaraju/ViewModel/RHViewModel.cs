@@ -25,6 +25,7 @@ namespace Laboratorio_Tiaraju.ViewModel
         private async Task OpenNovoColaboradorView()
         {
             await Navigation.PushAsync(new View.NovoColaboradorView());
+            //await Navigation.PushModalAsync(new View.NovoColaboradorView());
         }
     }
 }

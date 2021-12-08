@@ -2,13 +2,60 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Cadastro de Colaborador"
+             xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors"
              x:Class="Laboratorio_Tiaraju.View.NovoColaboradorView">
-    <ContentPage.Content>  
-        
-            <StackLayout Margin="10,10,0,0">
+    <ContentPage.Content>
+        <Grid>
+           
+
+            <StackLayout Margin="10,20,10,0">
                 <Label Text="Nome do Colaborador"
-                       TextColor="{StaticResource Black}"/>
-            </StackLayout> 
-        
+                       FontFamily="MontserratMedium"
+                       FontSize="18"
+                       TextColor="OrangeRed"/>
+
+                <dxe:TextEdit/>
+                
+
+                <Label Text="Nome de Usuário"
+                       Margin="0,20,0,0"
+                       FontFamily="MontserratMedium"
+                       FontSize="18"
+                       TextColor="OrangeRed"/>
+
+                <dxe:TextEdit/>
+
+                <Label Text="Data de Admissão"
+                       Margin="0,20,0,0"
+                       FontFamily="MontserratMedium"
+                       FontSize="18"
+                       TextColor="OrangeRed"/>
+
+                <dxe:DateEdit DisplayFormat="d"/>
+
+                
+                <Label Text="Cargo"
+                       Margin="0,20,0,0"
+                       FontFamily="MontserratMedium"
+                       FontSize="18"
+                       TextColor="OrangeRed"/>
+
+                <dxe:TextEdit EndIcon="job.png"/>
+
+                <Label Text="Setor"
+                       Margin="0,20,0,0"
+                       FontFamily="MontserratMedium"
+                       FontSize="18"
+                       TextColor="OrangeRed"/>
+
+                <dxe:ComboBoxEdit/>
+
+                <Button Text="Cadastrar"
+                        Margin="0,60,0,0"
+                        CornerRadius="10"
+                        TextColor="White"
+                        BackgroundColor="OrangeRed"/>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

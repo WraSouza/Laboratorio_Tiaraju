@@ -14,6 +14,7 @@ namespace Laboratorio_Tiaraju.View
     {
         public NovoColaboradorView()
         {
+            DevExpress.XamarinForms.Editors.Initializer.Init();
             InitializeComponent();
         }
     }
