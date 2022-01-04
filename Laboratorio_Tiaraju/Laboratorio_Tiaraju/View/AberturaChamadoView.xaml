@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="GLPI"
+             x:Class="Laboratorio_Tiaraju.View.AberturaChamadoView">
+    <ContentPage.Content>
+        <StackLayout>
+            <WebView
+                x:Name="navegador"
+                Navigated="paginaCarregada"
+                Navigating="carregandoPagina"
+                VerticalOptions="FillAndExpand" />
+            <Label x:Name="lblStatus" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

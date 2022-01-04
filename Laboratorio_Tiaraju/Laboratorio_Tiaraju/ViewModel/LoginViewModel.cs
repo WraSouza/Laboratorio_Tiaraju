@@ -25,7 +25,7 @@ namespace Laboratorio_Tiaraju.ViewModel
             get => _Nome;
             set
             {
-                _Nome = value;
+                _Nome = value.ToLower();
                 OnPropertyChanged();
             }
         }
@@ -95,6 +95,7 @@ namespace Laboratorio_Tiaraju.ViewModel
 
                         if(status != "ativo")
                         {
+                            await Task.Delay(2000);
                             await Application.Current.MainPage.DisplayAlert("Info", "Usuário Sem Autorização de Acesso", "OK");
                         }
                         else

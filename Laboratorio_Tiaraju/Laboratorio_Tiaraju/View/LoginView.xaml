@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
+             xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors"
              Title="Login"
              x:Class="Laboratorio_Tiaraju.View.LoginView">
 
@@ -10,6 +11,7 @@
     </ContentPage.BindingContext>    
     
     <ContentPage.Content>
+        <Grid>
         <StackLayout BackgroundColor="White">
             <Image Source="logotiaraju.jpg"/>
 
@@ -34,8 +36,8 @@
                        FontSize="20"
                        FontAttributes="Bold"/>
 
-                <Entry Text="{Binding Nome}"
-                       Placeholder="Informe Usuário"/>
+                <dxe:TextEdit Text="{Binding Nome}" CornerRadius="10"/>
+                
 
                 <Label Text="Senha"
                        Margin="0,30,0,0"
@@ -43,9 +45,9 @@
                        FontSize="20"
                        FontAttributes="Bold"/>
 
-                <Entry Text="{Binding Senha}"                       
-                       Placeholder="Informe Senha"
-                       IsPassword="True"/>
+                <dxe:PasswordEdit Text="{Binding Senha}"
+                                  CornerRadius="10"/>
+                
             </StackLayout>
 
             <Button Text="Acessar"
@@ -55,6 +57,13 @@
                     Margin="20,30,20,30"
                     Command="{Binding LoginCommand}"
                     BackgroundColor="OrangeRed"/>
-        </StackLayout>
+            </StackLayout>
+            
+            <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Color="OrangeRed"/>          
+       
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

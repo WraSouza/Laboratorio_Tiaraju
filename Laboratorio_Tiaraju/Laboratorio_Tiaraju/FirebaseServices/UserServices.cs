@@ -11,8 +11,7 @@ namespace Laboratorio_Tiaraju.FirebaseServices
 {
     public class UserServices
     {
-        FirebaseClient firebase;
-        //string Responsabilidade = "responsavel";
+        FirebaseClient firebase;        
 
         public UserServices()
         {

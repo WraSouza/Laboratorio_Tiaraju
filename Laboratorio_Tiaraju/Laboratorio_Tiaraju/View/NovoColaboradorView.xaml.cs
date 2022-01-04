@@ -16,6 +16,7 @@ namespace Laboratorio_Tiaraju.View
         {
             DevExpress.XamarinForms.Editors.Initializer.Init();
             InitializeComponent();
+            this.BindingContext = new List<string>() { "COMERCIAL", "COMPRAS", "CQ", "GQ", "PRODUÇÃO", "RH", "TI" };
         }
     }
 }

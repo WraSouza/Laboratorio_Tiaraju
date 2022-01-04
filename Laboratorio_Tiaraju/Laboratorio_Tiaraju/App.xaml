@@ -8,6 +8,7 @@
         <Color x:Key="OrangeRed">#ff4500</Color>
         <Color x:Key="LightGray">#d3d3d3</Color>
         <Color x:Key="Black">#000000</Color>
+        <Color x:Key="GreenLabel">#006600</Color>
         
         
 

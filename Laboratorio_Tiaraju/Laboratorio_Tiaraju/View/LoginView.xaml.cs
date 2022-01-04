@@ -14,6 +14,7 @@ namespace Laboratorio_Tiaraju.View
     {
         public LoginView()
         {
+            DevExpress.XamarinForms.Editors.Initializer.Init();
             InitializeComponent();
         }
     }

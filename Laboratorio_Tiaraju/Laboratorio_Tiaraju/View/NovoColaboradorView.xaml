@@ -2,55 +2,69 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Cadastro de Colaborador"
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
              xmlns:dxe="http://schemas.devexpress.com/xamarin/2014/forms/editors"
              x:Class="Laboratorio_Tiaraju.View.NovoColaboradorView">
+    <ContentPage.BindingContext>
+        <mvvm:NovoColaboradorViewModel/>
+    </ContentPage.BindingContext>    
+    
     <ContentPage.Content>
-        <Grid>
-           
+        <Grid>          
 
             <StackLayout Margin="10,20,10,0">
                 <Label Text="Nome do Colaborador"
                        FontFamily="MontserratMedium"
                        FontSize="18"
-                       TextColor="OrangeRed"/>
+                       TextColor="{StaticResource GreenLabel}"/>
 
-                <dxe:TextEdit/>
+                <dxe:TextEdit
+                    Text="{Binding NomeColaborador}"
+                    CornerRadius="10"/>
                 
 
                 <Label Text="Nome de Usuário"
                        Margin="0,20,0,0"
                        FontFamily="MontserratMedium"
                        FontSize="18"
-                       TextColor="OrangeRed"/>
+                       TextColor="{StaticResource GreenLabel}"/>
 
-                <dxe:TextEdit/>
+                <dxe:TextEdit                   
+                    CornerRadius="10"/>
 
                 <Label Text="Data de Admissão"
                        Margin="0,20,0,0"
                        FontFamily="MontserratMedium"
                        FontSize="18"
-                       TextColor="OrangeRed"/>
+                       TextColor="{StaticResource GreenLabel}"/>
 
-                <dxe:DateEdit DisplayFormat="d"/>
+                <dxe:DateEdit DisplayFormat="d"
+                              Date="{Binding DataAdmissao}"
+                              CornerRadius="10"/>
 
                 
                 <Label Text="Cargo"
                        Margin="0,20,0,0"
                        FontFamily="MontserratMedium"
                        FontSize="18"
-                       TextColor="OrangeRed"/>
+                       TextColor="{StaticResource GreenLabel}"/>
 
-                <dxe:TextEdit EndIcon="job.png"/>
+                <dxe:TextEdit EndIcon="job.png"
+                              Text="{Binding Cargo}"
+                              CornerRadius="10"/>
 
                 <Label Text="Setor"
                        Margin="0,20,0,0"
                        FontFamily="MontserratMedium"
                        FontSize="18"
-                       TextColor="OrangeRed"/>
+                       TextColor="{StaticResource GreenLabel}"/>
 
-                <dxe:ComboBoxEdit/>
+                <dxe:ComboBoxEdit
+                    ItemsSource="{Binding Setor}"
+                    CornerRadius="10"/>
 
                 <Button Text="Cadastrar"
+                        Command="{Binding CadastraColaboradorCommand}"
                         Margin="0,60,0,0"
                         CornerRadius="10"
                         TextColor="White"
