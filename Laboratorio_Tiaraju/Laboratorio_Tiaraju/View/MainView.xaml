@@ -9,10 +9,9 @@
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <ScrollView>
-            
+        <ScrollView Orientation="Vertical">           
         
-        <Grid RowDefinitions="130,50,200,50" Margin="10,0,10,0">
+        <Grid RowDefinitions="130,50,200,50,200,50,200" Margin="10,0,10,0">
             <Grid>
                 <Image Source="meetingroomlogo.jpg"                       
                        Aspect="Fill"/>
@@ -65,10 +64,10 @@
 
                             <!--Aniversariantes-->                            
                                 <Grid Grid.Column="1">
-                                    <Image Source="cardapiologo.jpg"
+                                    <Image Source="aniversariologo.jpg"
                                             Aspect="Fill"/>
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="Cardápio Semanal"
+                                        <Label Text="Aniversariantes"
                                                VerticalOptions="EndAndExpand"
                                                HorizontalOptions="StartAndExpand"
                                                FontSize="20"
@@ -82,7 +81,7 @@
                             
                             <!--Prevenção COVID-->
                             <Grid Grid.Column="2">
-                                <Image Source="cardapiologo.jpg"
+                                <Image Source="prevencaocovidlogo.jpg"
                                             Aspect="Fill"/>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Prevenção COVID"
@@ -117,7 +116,7 @@
                         <!--Abertura de Chamado-->
                         <Grid ColumnDefinitions="180,180,180" RowDefinitions="200">
                             <Grid Grid.Column="0">
-                                <Image Source="tilogo.jpg"
+                                <Image Source="aberturachamadologo.jpg"
                                        Aspect="Fill"/>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="Abertura de Chamado"
@@ -132,12 +131,12 @@
                                 </StackLayout>
                             </Grid>
 
-                            <!--Aniversariantes-->
+                            <!--Calendário CQ-->
                             <Grid Grid.Column="1">
-                                <Image Source="cardapiologo.jpg"
+                                <Image Source="calendariocqlogo.jpg"
                                             Aspect="Fill"/>
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="Cardápio Semanal"
+                                    <Label Text="Calendário CQ"
                                                VerticalOptions="EndAndExpand"
                                                HorizontalOptions="StartAndExpand"
                                                FontSize="20"
@@ -171,155 +170,76 @@
 
             </StackLayout>
 
+                <StackLayout Grid.Column="0" Grid.Row="5">
+                    <Label Text="Setores"
+                       TextColor="Black"
+                       FontSize="20"
+                       FontFamily="MontserratBold"
+                       Margin="0,20,0,0"/>
+                </StackLayout>
 
-
-
-            <!--<Grid Grid.Row="1" ColumnDefinitions="2*,2*"> 
-                
-
-                <Grid Grid.Column="0">
-                        <Image Source="cardapiologo.jpg"
-                           Aspect="Fill"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Cardápio"
-                           VerticalOptions="End"
+                <!--Setores-->
+                <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="6">
+                    <ScrollView Orientation="Horizontal">
+                        <StackLayout>
+                            <!--TI-->
+                            <Grid ColumnDefinitions="180,180,180" RowDefinitions="200">
+                                <Grid Grid.Column="0">
+                                    <Image Source="tilogo.jpg"
+                                       Aspect="Fill"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="TI"
+                           VerticalOptions="EndAndExpand"
                            HorizontalOptions="StartAndExpand"
                            FontSize="20"
                            FontAttributes="Bold"
                            TextColor="White"/>
-                        <StackLayout.GestureRecognizers>                            
-                                <TapGestureRecognizer Command="{Binding OpenCardapioView}"/>                            
-                        </StackLayout.GestureRecognizers>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenChamado}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+
+                                <!--RH-->
+                                <Grid Grid.Column="1">
+                                    <Image Source="rhinformalogo.jpg"
+                                            Aspect="Fill"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="RH"
+                                               VerticalOptions="EndAndExpand"
+                                               HorizontalOptions="StartAndExpand"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenCardapioView}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+
+                                <!--Prevenção COVID-->
+                                <Grid Grid.Column="2">
+                                    <Image Source="cardapiologo.jpg"
+                                            Aspect="Fill"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Prevenção COVID"
+                                               VerticalOptions="EndAndExpand"
+                                               HorizontalOptions="StartAndExpand"
+                                               FontSize="20"
+                                               FontAttributes="Bold"
+                                               TextColor="White"/>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenCardapioView}"/>
+                                        </StackLayout.GestureRecognizers>
+                                    </StackLayout>
+                                </Grid>
+                            </Grid>
                         </StackLayout>
-                    </Grid>
+                    </ScrollView>
 
-                    --><!--Aniversário--><!--
-                    <Grid Grid.Column="1">
-                        <Image Source="aniversariologo.jpg"
-                           Aspect="Fill"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Aniversariantes"
-                           VerticalOptions="End"
-                           HorizontalOptions="StartAndExpand"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="White"/>
-                        </StackLayout>
-                    </Grid>
+                </StackLayout>
 
-                    --><!--Dia T--><!--
-                    <Grid Grid.Column="0" Grid.Row="1">
-                        <Image Source="diaTlogo.jpg"
-                           Aspect="Fill"/>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Dia T"
-                           VerticalOptions="End"
-                           HorizontalOptions="StartAndExpand"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="White"/>
-                        </StackLayout>
-                    </Grid>
-                
-                --><!--Prevenção Covid--><!--                
-                <Grid Grid.Column="1" Grid.Row="1">
-                    <Image Source="prevencaocovidlogo.jpg"
-                           Aspect="Fill"/>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Prevenção Covid"
-                           VerticalOptions="End"
-                           HorizontalOptions="StartAndExpand"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="White"/>
-                    </StackLayout>
-                </Grid>
-
-
-            </Grid>-->
-        </Grid>
-        
-        <!--<ScrollView>
-            <StackLayout Margin="10">                          
-            
-            <Grid RowDefinitions="250">                
-                <Image Source="cardapiologo.jpg" 
-                       Aspect="Fill"/>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Cardápio da Semana"
-                           VerticalOptions="End"
-                           HorizontalOptions="StartAndExpand"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="White"/>
-
-                        <Image Source="add.png"
-                               VerticalOptions="End">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenCardapioView}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </StackLayout>
-                    
-                </Grid>
-
-            <Grid RowDefinitions="250">
-                    <Image Source="aniversariologo.jpg" 
-                           Aspect="Fill"/>
-
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Aniversariantes"
-                           VerticalOptions="End"
-                           HorizontalOptions="StartAndExpand"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="White"/>
-
-                        <Image Source="add.png"
-                               VerticalOptions="End"/>
-                    </StackLayout>
-                </Grid>
-
-            <Grid RowDefinitions="250">
-                    <Image Source="feriaslogo.jpg" 
-                           Aspect="Fill"/>
-
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Férias"
-                           VerticalOptions="End"
-                           HorizontalOptions="StartAndExpand"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="White"/>
-
-                        <Image Source="add.png"
-                               VerticalOptions="End"/>
-                    </StackLayout>
-                </Grid>
-
-            <Grid RowDefinitions="250">
-                    <Image Source="meetingroomlogo.jpg"
-                           Aspect="Fill"/>
-
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Sala de Reuniões"
-                           VerticalOptions="End"
-                           HorizontalOptions="StartAndExpand"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="White"/>
-
-                        <Image Source="add.png"
-                               VerticalOptions="End">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenMeetingRoomView}"/>
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </StackLayout>
-                </Grid>
-
-            </StackLayout>
-        </ScrollView>-->
+            </Grid>       
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

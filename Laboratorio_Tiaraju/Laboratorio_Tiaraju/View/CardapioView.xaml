@@ -5,10 +5,23 @@
              x:Class="Laboratorio_Tiaraju.View.CardapioView">
     <ContentPage.Content>
         <StackLayout>
-            <WebView x:Name="navegador" Source="https://1drv.ms/u/s!AnMKfPzYWZremqtb67AekZARwrgK8w?e=CbRRxm"  
+            <!--<WebView x:Name="navegador" Source="https://1drv.ms/u/s!AnMKfPzYWZremqtb67AekZARwrgK8w?e=CbRRxm"  
                  Navigating="webOnNavigating"  
                  HorizontalOptions="FillAndExpand"  
-                 VerticalOptions="FillAndExpand"/>
+                 VerticalOptions="FillAndExpand"/>-->
+            <CollectionView x:Name="collectionview">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Image Source="{Binding Imagem}"
+                                   HeightRequest="100"
+                                   Aspect="Fill"/>
+                        </StackLayout>
+                        
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

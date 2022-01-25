@@ -1,0 +1,6 @@
+﻿<resources>
+  <string name="back4app_server_url">"https://parseapi.back4app.com"</string>
+   <string name="back4app_app_id">tvuqqppRy6hooTN0zlvtUm6MQn2dxnDHxaAMGa9X</string>
+  <string name="back4app_dotnet_key">LmZHvnLi0vBnhKC1jVXy9pZS3iYTfb62ghHUdvNx</string>
+ <string name="app_name">Laboratorio_Tiaraju</string>
+</resources>

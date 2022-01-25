@@ -8,6 +8,7 @@ using Android.Util;
 using Android.Widget;
 using Plugin.FirebasePushNotification;
 
+
 namespace Laboratorio_Tiaraju.Droid
 {
     [Activity(Label = "Laboratorio_Tiaraju", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
@@ -20,10 +21,17 @@ namespace Laboratorio_Tiaraju.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             global::Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
+            //ParseClient.Initialize(new ParseClient.Configuration
+            //{
+            //    ApplicationId = GetString(Resource.String.back4app_app_id),
+            //    WindowsKey = GetString(Resource.String.back4app_dotnet_key),
+            //    Server = "https://parseapi.back4app.com"
+            //});
             //FirebasePushNotificationManager.ProcessIntent(this, Intent);
             LoadApplication(new App());
 
             FirebasePushNotificationManager.ProcessIntent(this, Intent);
+            //ParseInstallation.CurrentInstallation.SaveAsync();
 
 
         }

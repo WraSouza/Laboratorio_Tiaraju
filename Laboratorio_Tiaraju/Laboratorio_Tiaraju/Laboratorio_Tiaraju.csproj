@@ -27,13 +27,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.XamarinForms.Editors" Version="21.2.3" />
+    <PackageReference Include="DevExpress.XamarinForms.Editors" Version="21.2.4" />
     <PackageReference Include="FirebaseDatabase.net" Version="4.0.7" />
-    <PackageReference Include="Plugin.FirebasePushNotification" Version="3.3.10" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.1" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />
+    <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+    <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.1" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.3.2" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.2244" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="5.0.0.2291" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +51,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\CardapioView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\EnviaCardapioModalView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\InformativoCovidView.xaml">
@@ -88,5 +92,9 @@
     <EmbeddedResource Update="View\TrocarSenhaView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ParseServerServices\" />
   </ItemGroup>
 </Project>
