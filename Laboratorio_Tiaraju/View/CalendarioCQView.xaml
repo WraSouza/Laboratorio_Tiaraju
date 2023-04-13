@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
+             x:Class="Laboratorio_Tiaraju.View.CalendarioCQView"
+             Title="CalendarioCQView">
+
+    <ContentPage.BindingContext>
+        <mvvm:CalendarioCQViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+    <StackLayout>
+    
+        <Image Source="logotiaraju.png"
+                       MaximumHeightRequest="100"
+                       InputTransparent="True"
+                       Margin="40,20,40,0"/>
+        
+            <Grid HeightRequest="800">
+            
+                <RefreshView Command="{Binding AtualizarTelaCommand}"
+                         IsRefreshing="{Binding Isrefreshing}"
+                         RefreshColor="OrangeRed">
+                
+                <CollectionView x:Name="collectionView"                                                            
+                                Margin="50,50,50,0"
+                                IsGrouped="True"
+                                HeightRequest="800"
+                                ItemsSource="{Binding Calendarios}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                        HorizontalItemSpacing="2"
+                        Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="5" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                <Label FontFamily="MontserratBold"
+                                       FontSize="15"
+                                       Text="Não Há Dados Cadastrados No Momento"
+                                       TextColor="Black" />
+                            </StackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            
+                            <Grid Margin="10,20,10,0" ColumnSpacing="15" RowSpacing="20" ColumnDefinitions="23,3*,3*" RowDefinitions="80">
+
+                                <Label FontSize="20"
+                                       Grid.Column="0"
+                                       Grid.Row="0"                                       
+                                       HorizontalOptions="Start"
+                                       Text="{Binding Dia}"
+                                       TextColor="Black" />
+                                
+                                <Border Grid.Row="0"
+                                        Grid.Column="1"
+                                        Grid.ColumnSpan="2"
+                                        BackgroundColor="Green"
+                                        Padding="0"                                        
+                                        StrokeShape="RoundRectangle 10">
+                                <Label FontFamily="MontserratMedium"
+                                               Text="{Binding Titulo}"
+                                               VerticalTextAlignment="Center"
+                                               HorizontalTextAlignment="Center"
+                                               FontSize="15"
+                                               TextColor="White" />
+                                
+                                    <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.AbrirCalendarioDetailCommand, Source={x:Reference collectionView}}" CommandParameter="{Binding .}" />
+                                    </Border.GestureRecognizers>
+                                </Border>
+
+                                    
+                                </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <CollectionView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <Label Margin="10,25,0,0"
+                                   BackgroundColor="White"
+                                   FontFamily="OpenSansSemibold"
+                                   HorizontalTextAlignment="Center"
+                                   FontSize="25"
+                                   Text="{Binding Mes}"
+                                   TextColor="Green" />
+                        </DataTemplate>
+                    </CollectionView.GroupHeaderTemplate>
+
+                </CollectionView>
+            </RefreshView>
+
+                <StackLayout HorizontalOptions="EndAndExpand"
+                             VerticalOptions="EndAndExpand">
+
+                   
+                    <Image Margin="0,0,10,10"
+                           HeightRequest="30"            
+                           Source="plus.png">                       
+                        
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AbrirCadastroCalendarioViewCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Label Text="Adicionar"
+                           Margin="0,0,0,10"/>
+
+                    <Image Margin="0,0,10,10"
+                           HeightRequest="30"            
+                           Source="complete.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AbrirCalendarioCQFinalizadosViewCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Label Text="Finalizados"
+                           Margin="0,0,0,10"/>
+
+                    <Image Margin="0,0,10,10"
+                           HeightRequest="30"            
+                           Source="delete.png"/>
+
+                    <Label Text="Excluídos"
+                           Margin="0,0,0,10"/>
+                </StackLayout>
+            
+            </Grid>
+        
+    </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Laboratorio_Tiaraju.View.PrincipalView"
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
+             Title="PrincipalView">
+
+    <ContentPage.BindingContext>
+        <mvvm:PrincipalViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+            <StackLayout BackgroundColor="#F8F8F8">
+
+                <Image Source="logotiaraju.png"
+                       MaximumHeightRequest="100"
+                       InputTransparent="True"
+                       Margin="40,20,40,0"/>
+                
+                <Grid BackgroundColor="#F8F8F8" RowDefinitions="30,220,20,40,210,30,110">
+
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="10,10,0,0">
+                    <Label FontFamily="OpenSansSemiBold"
+                           FontSize="20"
+                           Text="Informativos"
+                           TextColor="Green" />
+                </StackLayout>
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10,10,10,0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 10">
+                    <Grid ColumnDefinitions="3*,4*,3*" RowDefinitions="50,50,50,40,50,40" RowSpacing="3">
+                        <Image Grid.Row="0"
+                               Grid.Column="0"
+                               Margin="0,10,0,0"
+                               Source="Cardapio.jpeg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenImagemCardapio}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Cardápio"
+                            TextColor="Black" />
+
+                        <!--  Tempo de Empresa  -->
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,10,0,0"
+                            Source="tempoempresaimagem.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenTempoEmpresa}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Tempo de Empresa"
+                            TextColor="Black" />
+
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Margin="0,10,0,0"
+                            Source="DiaT.jpeg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenDiaT}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Dia T"
+                            TextColor="Black" />
+
+                        <Image
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Margin="0,10,0,0"
+                            Source="PautaFixa.jpg" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenPautaFixa}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Pauta Fixa"
+                            TextColor="Black" />
+
+                        <Image
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="0,10,0,0"
+                            Source="rhinforma.jpg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenRHInforma}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="RH Informa"
+                            TextColor="Black" />
+
+                        <!--  Bônus Tiarajú  -->
+                        <Image
+                            Grid.Row="2"
+                            Grid.Column="2"
+                            Margin="0,10,0,0"
+                            Source="bonustiarajuimagem.jpg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenBonusTiaraju}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Bônus Tiarajú"
+                            TextColor="Black" />
+
+
+                    </Grid>
+                </Border>
+
+                <StackLayout
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Margin="10,5,0,0">
+                    <Label
+                        FontFamily="OpenSansSemibold"
+                        FontSize="20"
+                        Text="Serviços"
+                        TextColor="Green" />
+                </StackLayout>
+
+                <!--  Serviços  -->
+                <Border
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Margin="10,0,10,0"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 10">
+                    <Grid ColumnDefinitions="2*,2*,2*" RowDefinitions="50,50,60,20">
+
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="0,10,0,0"
+                            BackgroundColor="Transparent"
+                            Source="glpi.jpg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenGLPI}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="GLPI"
+                            TextColor="Black" />
+
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Source="calendarioCQ.jpg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenCalendarioCQCommand}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Calendário CQ"
+                            TextColor="Black" />
+
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            Source="calendarioCQ.jpg">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenBiblioteca}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Calendário GQ"
+                            TextColor="Black" />
+
+                        <!--PMO-->
+                        <Image
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Margin="0,10,0,0"
+                            Source="gerenciamentoprojeto.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenBiblioteca}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="PMO"
+                            TextColor="Black" />
+                        
+                        <!--Denúncia-->
+                            <Image Grid.Row="2"
+                                   Grid.Column="1"
+                                   Margin="0,10,0,0"
+                                   Source="anonymity.png">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenBiblioteca}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                            <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Denúncia"
+                            TextColor="Black" />
+                        </Grid>
+
+                </Border>               
+
+            </Grid>
+            </StackLayout>
+    </ScrollView>
+</ContentPage>

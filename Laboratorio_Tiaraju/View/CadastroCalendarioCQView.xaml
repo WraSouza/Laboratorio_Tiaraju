@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Laboratorio_Tiaraju.View.CadastroCalendarioCQView"
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
+             Title="CadastroCalendarioCQView">
+
+    <ContentPage.BindingContext>
+        <mvvm:CadastroCalendarioCQViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ScrollView>
+    <VerticalStackLayout>
+        <Image Source="logotiaraju.png"
+               MaximumHeightRequest="100"
+               InputTransparent="True"
+               Margin="40,20,40,0"/>
+
+        <Label Text="Título"
+               Margin="10,20,0,0"
+               FontFamily="OpenSansSemibold"
+               FontSize="25"
+               TextColor="Green"/>
+
+        <Border Margin="10,0,20,0"
+                BackgroundColor="#8C8C8C"
+                Opacity="0.7"
+                HeightRequest="60"
+                StrokeShape="RoundRectangle 10">
+            <Entry TextColor="White"
+                   Text="{Binding Title}"
+                   FontSize="23"
+                   Margin="0,10,0,0"/>
+        </Border>
+
+        <Label Text="Data da Atividade"
+               Margin="10,30,0,0"
+               FontFamily="OpenSansSemibold"
+               FontSize="25"
+               TextColor="Green"/>
+
+        <Border Margin="10,0,20,0"
+                BackgroundColor="#8C8C8C"
+                Opacity="0.7"
+                HeightRequest="60"
+                StrokeShape="RoundRectangle 10">
+            <DatePicker x:Name="datePicker" TextColor="White" FontSize="20" Date="{Binding Datacoleta}">
+                <DatePicker.Format>dd-MMMM-yyyy</DatePicker.Format>
+            </DatePicker>
+        </Border>
+
+        <Label Text="Descrição"
+               Margin="10,30,0,0"
+               FontFamily="OpenSansSemibold"
+               FontSize="25"
+               TextColor="Green"/>
+
+        <Border Margin="10,0,20,0"
+                BackgroundColor="#8C8C8C"
+                Opacity="0.7"
+                HeightRequest="180"
+                StrokeShape="RoundRectangle 10">
+            <Editor FontSize="20"
+                    Text="{Binding Description}"
+                    TextColor="White"/>
+        </Border>
+
+        <Border WidthRequest="50"
+                HeightRequest="50"
+                VerticalOptions="End"
+                HorizontalOptions="EndAndExpand"
+                Margin="0,40,10,0"
+                BackgroundColor="Green"
+                StrokeShape="RoundRectangle 50">
+                <Image Source="savedisk.png"                   
+                   HeightRequest="20"
+                   WidthRequest="20">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SaveCalendarCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+        </Border>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Laboratorio_Tiaraju.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Laboratorio_Tiaraju"
+    Shell.NavBarIsVisible="False"
+    Shell.TabBarBackgroundColor="#F8F8F8"
+    xmlns:views="clr-namespace:Laboratorio_Tiaraju.View"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+        <Tab Title="Início"
+             Route="Main"
+             Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate views:PrincipalView}"/>
+        </Tab>
+
+        <Tab Title="Perfil"
+             Icon="user.png">
+            <ShellContent ContentTemplate="{DataTemplate views:PrincipalView}"/>
+        </Tab>
+    </TabBar>
+    <!--<ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />-->
+
+</Shell>

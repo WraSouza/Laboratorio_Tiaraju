@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Laboratorio_Tiaraju.View.LoginView"
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
+             Title="LoginView">
+    <ContentPage.BindingContext>
+        <mvvm:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+    <VerticalStackLayout>
+        <Grid HeightRequest="800">
+            <!--<Grid.HeightRequest>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="Android" Value="800" />
+                    <On Platform="Windows" Value="600" />
+                </OnPlatform>
+            </Grid.HeightRequest>-->
+            <Image Source="foto02.jpg"
+                   Aspect="AspectFill"/>
+            <VerticalStackLayout>
+                <Image Source="logotiaraju.png"
+                       MaximumHeightRequest="100"
+                       Margin="40,20,40,0"/>
+
+                <VerticalStackLayout VerticalOptions="CenterAndExpand" Margin="0,160,0,0">
+                    <!--<VerticalStackLayout.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Windows" Value="0,250,0,0"/>
+                            <On Platform="Android" Value="0,190,0,0"/>
+                        </OnPlatform>
+                    </VerticalStackLayout.Margin>-->
+                    <Label Text="Usuário"
+                           FontFamily="OpenSansSemibold"
+                           Margin="30,0,0,0"
+                           TextColor="Green"
+                           FontSize="20"/>
+
+                    <Border BackgroundColor="#8C8C8C"
+                            Opacity="0.7"
+                            HeightRequest="60"
+                            StrokeShape="RoundRectangle 10"
+                            Margin="30,0,30,0">
+                        
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="userimagelogin.png"
+                                   Margin="10,0,0,0"
+                                   InputTransparent="True"
+                                   HeightRequest="20"/>
+
+                            <Entry TextColor="White"                                                                     
+                                   HorizontalOptions="StartAndExpand"
+                                   Text="{Binding Name}"
+                                   WidthRequest="1200"                                   
+                                   FontSize="20"                                   
+                                   Margin="35,0,0,0"/>
+                        </StackLayout>
+                    </Border>
+
+                    
+                    <Label Text="Senha"
+                           FontFamily="OpenSansSemibold"
+                           Margin="30,30,0,0"
+                           TextColor="Green"
+                           FontSize="20"/>
+
+                    <Border BackgroundColor="#8C8C8C"
+                            Opacity="0.7"
+                            HeightRequest="60"
+                            StrokeShape="RoundRectangle 10"
+                            Margin="30,0,30,0">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="padlock.png"
+                                   Margin="10,0,0,0"
+                                   InputTransparent="True"
+                                   HeightRequest="20"/>
+
+                            <Entry IsPassword="True"  
+                                   HorizontalOptions="StartAndExpand"                                  
+                                   Text="{Binding Password}"
+                                   TextColor="White"                                      
+                                   WidthRequest="1200"                                  
+                                   FontSize="20"
+                                   Margin="35,0,0,0"/>
+                        </StackLayout>
+                    </Border>                    
+
+                    <Button Text="Acessar"
+                             FontFamily="OpenSansSemibold"
+                            Command="{Binding LoginCommand}"
+                            FontSize="15"
+                            BackgroundColor="Green"
+                            Margin="20,180,20,0">
+                        <Button.Shadow>
+                            <Shadow Brush="#4F4F4F"
+                                    Offset="10,10" />
+                        </Button.Shadow>
+                    </Button>
+                    
+                </VerticalStackLayout>
+                
+            </VerticalStackLayout>
+
+            <ActivityIndicator
+                    HorizontalOptions="Center"
+                    IsRunning="{Binding Isbusy}"
+                    VerticalOptions="Center"
+                    Color="Green" />
+        </Grid>        
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
