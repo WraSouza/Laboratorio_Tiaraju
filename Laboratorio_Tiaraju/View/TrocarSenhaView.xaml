@@ -7,7 +7,8 @@
     <ContentPage.BindingContext>
         <mvvm:TrocarSenhaViewModel/>
     </ContentPage.BindingContext>
-    
+
+    <ScrollView>
     <Grid RowDefinitions="*,*">
         <Image Source="logotiaraju.png"
                MaximumHeightRequest="100"
@@ -45,10 +46,7 @@
                         FontSize="Medium"
                         FontFamily="OpenSansSemibold"/>
             </VerticalStackLayout>
-        </Border>
-
-        
-
-       
+        </Border>       
     </Grid>
+    </ScrollView>
 </ContentPage>

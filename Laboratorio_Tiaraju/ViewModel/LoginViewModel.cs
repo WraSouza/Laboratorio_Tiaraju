@@ -2,12 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Laboratorio_Tiaraju.FirebaseServices;
 using Laboratorio_Tiaraju.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Java.Util.Jar.Attributes;
+
 
 namespace Laboratorio_Tiaraju.ViewModel
 {
