@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using Laboratorio_Tiaraju.FirebaseServices;
 using Laboratorio_Tiaraju.Model;
 using Laboratorio_Tiaraju.Services;
@@ -12,88 +11,24 @@ using System.Threading.Tasks;
 
 namespace Laboratorio_Tiaraju.ViewModel
 {
-    partial class CalendarioCQViewModel : ObservableObject
+    partial class CalendarioCQExcluidosViewModel : ObservableObject
     {
         public ObservableCollection<CalendarioGroup> Calendarios { get; private set; } = new ObservableCollection<CalendarioGroup>();
 
-        [ObservableProperty]
-        public bool isrefreshing;
-
-        public CalendarioCQViewModel()
+        public CalendarioCQExcluidosViewModel()
         {
-            BuscaCalendario();
-            //AtualizaTela = new Command(AtualizarTela);
+            BuscaCalendariosExcluidos();
         }
 
-        [RelayCommand]
-        void AtualizarTela()
+        async void BuscaCalendariosExcluidos()
         {
             bool verificaConexao = Conectividade.VerificaConectividade();
 
             if (verificaConexao)
             {
                 Calendarios.Clear();
-                BuscaCalendario();
-
-
-                Isrefreshing = false;
-            }
-            else
-            {
-                Mensagem.MensagemErroConexao();
-
-                Isrefreshing = false;
-            }
-
-
-        }
-
-        [RelayCommand]
-        private async void AbrirCalendarioDetail(CalendarioCQ model)
-        {
-            if (model is null)
-            {
-                return;
-            }
-
-            Preferences.Set("DiaCalendario", model.Dia);
-            Preferences.Set("MesCalendario", model.Mes);
-            Preferences.Set("DescricaoCalendario", model.Descricao);
-            Preferences.Set("StatusFinalizado", model.IsFinished);
-            Preferences.Set("StatusExcluido", model.IsExcluded);
-            var route = $"{nameof(View.CalendarioCQDetailView)}";
-            await Shell.Current.GoToAsync(route);
-        }
-
-        [RelayCommand]
-        private async void AbrirCadastroCalendarioView()
-        {
-            var route = $"{nameof(View.CadastroCalendarioCQView)}";
-            await Shell.Current.GoToAsync(route);
-        }
-
-        [RelayCommand]
-        private async void AbrirCalendarioCQFinalizadosView()
-        {
-            var route = $"{nameof(View.CalendarioCQFinalizadosView)}";
-            await Shell.Current.GoToAsync(route);
-        }
-
-        [RelayCommand]
-        private async void AbrirCalendarioCQExcluidosView()
-        {
-            var route = $"{nameof(View.CalendarioCQExcluidosView)}";
-            await Shell.Current.GoToAsync(route);
-        }
-
-        async void BuscaCalendario()
-        {
-            bool verificaConexao = Conectividade.VerificaConectividade();
-
-            if (verificaConexao)
-            {
                 CalendarioCQServices dados = new CalendarioCQServices();
-                var dadosCalendario = await dados.RetornaCalendariosNaoFinalizados();
+                var dadosCalendario = await dados.RetornaCalendariosExcluidos();
                 ObservableCollection<CalendarioCQ> novoCalendarioJaneiro = new ObservableCollection<CalendarioCQ>();
                 ObservableCollection<CalendarioCQ> novoCalendarioFevereiro = new ObservableCollection<CalendarioCQ>();
                 ObservableCollection<CalendarioCQ> novoCalendarioMarco = new ObservableCollection<CalendarioCQ>();
@@ -225,10 +160,9 @@ namespace Laboratorio_Tiaraju.ViewModel
             }
             else
             {
-                Mensagem.MensagemErroConexao();                
+                Mensagem.MensagemErroConexao();
+
             }
-
-
         }
     }
 }

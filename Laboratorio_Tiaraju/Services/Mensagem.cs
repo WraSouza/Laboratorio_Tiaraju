@@ -10,7 +10,7 @@ namespace Laboratorio_Tiaraju.Services
     {
         public static void MensagemObrigatoriedadeCredecnciais()
         {
-            Application.Current.MainPage.DisplayAlert("Ops!", "Necessário Informar Usuário e Senha", "OK");
+            Application.Current.MainPage.DisplayAlert("Ops!", "Necessário Informar Campos", "OK");
         }
 
         public static void MensagemErroConexao()
@@ -51,6 +51,16 @@ namespace Laboratorio_Tiaraju.Services
         public static void AtividadeFinalizadaComSucesso()
         {
             Application.Current.MainPage.DisplayAlert("Sucesso", "Evento Finalizado Com Sucesso.", "OK");
+        }
+
+        public static void SenhaAtualizadaComSucesso()
+        {
+            Application.Current.MainPage.DisplayAlert("Sucesso", "Senha Atualizada Com Sucesso.", "OK");
+        }
+
+        public static void SenhasNaoConferem()
+        {
+            Application.Current.MainPage.DisplayAlert("Sucesso", "Senhas Informadas Não Conferem.", "OK");
         }
     }
 }

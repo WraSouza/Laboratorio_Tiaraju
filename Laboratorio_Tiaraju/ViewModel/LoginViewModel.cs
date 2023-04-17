@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Java.Util.Jar.Attributes;
 
 namespace Laboratorio_Tiaraju.ViewModel
 {
@@ -45,26 +46,69 @@ namespace Laboratorio_Tiaraju.ViewModel
                     return;
                 }
 
+                Name = Name.Replace(" ", "");
+
                 Isbusy = true;
 
                 var userService = new UserServices();
 
-                Preferences.Set("Nome", Name);
+                bool verificaUsuario = await userService.IsUSerExists(Name);
 
-                string departamento = await userService.GetUserDept(Name);
+                if (verificaUsuario)
+                {
+                    string departamento = await userService.GetUserDept(Name);
 
-                string status = await userService.GetUserStatus(Name);
+                    string statusUsuario = await userService.GetUserStatus(Name);
 
-                string senhaUsuario = await userService.GetUserSenha(Name);
+                    string senhaUsuario = await userService.GetUserSenha(Name);
 
-                Preferences.Set("Departamento", departamento);
+                    Preferences.Set("Nome", Name);
 
-                Application.Current.MainPage = new AppShell();
+                    Preferences.Set("Departamento", departamento);
+                  
+
+                    if ((senhaUsuario == "1234") && (statusUsuario == "ativo"))
+                    {
+                        Application.Current.MainPage = new View.TrocarSenhaView();
+
+                        return;
+                    }
+
+                    if(statusUsuario == "ativo")
+                    {
+                        string senhaCriptografada = Criptografia.CriptografaSenha(Password);
+
+                        bool verificaCredenciais = await userService.LoginUser(Name, senhaCriptografada);
+
+                        if (verificaCredenciais)
+                        {
+                                                       
+
+                            if (statusUsuario == "ativo")
+                            {
+                                Application.Current.MainPage = new AppShell();
+
+                                return;
+                            }
+
+                            Mensagem.MensagemUsuarioSemAutorizacao();
+
+                            return;
+                        }
+                    }                    
+                   
+                }
+
+                Mensagem.MensagemSenhaInvalida();                 
                
             }
             catch (Exception ex)
             {
                 await Application.Current.MainPage.DisplayAlert("Erro", ex.Message, "OK");
+            }
+            finally
+            {
+                Isbusy = false;
             }
 
         }

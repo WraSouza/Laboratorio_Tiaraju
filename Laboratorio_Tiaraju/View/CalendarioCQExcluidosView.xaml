@@ -2,11 +2,102 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Laboratorio_Tiaraju.View.CalendarioCQExcluidosView"
+             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
              Title="CalendarioCQExcluidosView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <ContentPage.BindingContext>
+        <mvvm:CalendarioCQExcluidosViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Image Source="logotiaraju.png"
+               MaximumHeightRequest="100"
+               InputTransparent="True"
+               Margin="40,20,40,0"/>
+
+        <Label Text="Excluídos"
+               FontSize="20"
+               FontFamily="OpenSansSemibold"
+               TextColor="Green"
+               Margin="10,20,0,30" />
+
+        <RefreshView Command="{Binding AtualizarTelaCommand}"
+                         IsRefreshing="{Binding IsRefreshing}"
+                         RefreshColor="Green">
+
+            <CollectionView x:Name="collectionView"
+                                Margin="10,20,10,0"
+                                IsGrouped="True"
+                                ItemsSource="{Binding Calendarios}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="2"
+                        Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="5" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label
+                                FontFamily="MontserratBold"
+                                FontSize="15"
+                                Text="Não Há Dados Cadastrados No Momento"
+                                TextColor="Black" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10,0,10,0" RowDefinitions="140">
+
+                            <Frame
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Padding="0"
+                                BorderColor="LightGray"
+                                CornerRadius="5">
+                                <StackLayout Margin="5">
+                                    <Label
+                                        FontSize="20"
+                                        FontFamily="MontserratMedium"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Dia}"
+                                        TextColor="Black" />
+                                    <Label
+                                        BackgroundColor="WhiteSmoke"
+                                        FontFamily="MontserratMedium"
+                                        Text="{Binding Titulo}"
+                                        TextColor="Black" />
+
+                                    <Label Text="Finalizado Por: " />
+
+                                    <Label FontFamily="MontserratBold" Text="{Binding FinalizadoPor}" />
+
+                                </StackLayout>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.IrParaFinalizadosDetail, Source={x:Reference collectionView}}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Label
+                            Margin="10,15,0,0"
+                            BackgroundColor="White"
+                            FontFamily="OpenSansSemibold"
+                            FontSize="20"
+                            Text="{Binding Mes}"
+                            TextColor="Green" />
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
 </ContentPage>

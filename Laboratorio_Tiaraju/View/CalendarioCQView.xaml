@@ -122,10 +122,15 @@
 
                     <Label Text="Finalizados"
                            Margin="0,0,0,10"/>
+                    
 
                     <Image Margin="0,0,10,10"
                            HeightRequest="30"            
-                           Source="delete.png"/>
+                           Source="delete.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AbrirCalendarioCQExcluidosViewCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
 
                     <Label Text="Excluídos"
                            Margin="0,0,0,10"/>
