@@ -1,0 +1,12 @@
+﻿namespace Laboratorio_Tiaraju
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+
+            MainPage = new View.Login.LoginView();
+        }
+    }
+}
