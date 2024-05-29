@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using Laboratorio_Tiaraju.ViewModel.Login;
 using Microsoft.Extensions.Logging;
 using UraniumUI;
 
@@ -23,6 +24,8 @@ namespace Laboratorio_Tiaraju
                     fonts.AddFont("Montserrat-Regular.ttf", "MontserratRegular");
                     fonts.AddFont("Montserrat-SemiBold.ttf", "MontserratSemibold");
                 });
+
+            builder.Services.AddTransient<LoginViewModel>();
 
 #if DEBUG
     		builder.Logging.AddDebug();

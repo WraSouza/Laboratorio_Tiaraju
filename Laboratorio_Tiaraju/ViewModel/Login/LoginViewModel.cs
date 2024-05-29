@@ -6,12 +6,9 @@ using Laboratorio_Tiaraju.Model.Entities;
 using Laboratorio_Tiaraju.Services.Conection;
 using Laboratorio_Tiaraju.Services.Criptography;
 using Laboratorio_Tiaraju.Services.Mensagens;
+using Laboratorio_Tiaraju.Validators;
 using Laboratorio_Tiaraju.View.Login;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 
 namespace Laboratorio_Tiaraju.ViewModel.Login
@@ -31,11 +28,21 @@ namespace Laboratorio_Tiaraju.ViewModel.Login
 
         [RelayCommand]
         public async Task Login()
-        {
+        {            
+            var login = new LoginRequest(name, password);
 
-            if (string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(Password))
+            var contract = new LoginContract(login);
+
+            if(!contract.IsValid)
             {
-                Mensagem.MensagemObrigatoriedadeCredenciais();
+                var messages = contract.Notifications.Select(x => x.Message);
+
+                var sb = new StringBuilder();
+
+                foreach (var message in messages)
+                    sb.Append($"{message}\n");
+
+                await App.Current.MainPage.DisplayAlert("Atenção", sb.ToString(), "OK");
 
                 return;
             }
@@ -44,13 +51,13 @@ namespace Laboratorio_Tiaraju.ViewModel.Login
 
             Preferences.Set("Nome", Name);
 
-            RUsuarioServices userServices = new RUsuarioServices();            
+            RUsuarioServices userServices = new RUsuarioServices();
 
             bool verificaConexao = Conectividade.VerificaConectividade();
 
             if (verificaConexao)
             {
-                Usuario user = await userServices.GetByName(Name);              
+                Usuario user = await userServices.GetByName(Name);
 
                 if (user.IsActive == true)
                 {
@@ -62,17 +69,17 @@ namespace Laboratorio_Tiaraju.ViewModel.Login
                         return;
                     }
 
-                   WUsuarioServices wUsuarioServices = new WUsuarioServices();                   
+                    WUsuarioServices wUsuarioServices = new WUsuarioServices();
 
-                   string senhaCriptografada = Criptografia.CriptografaSenha(Password);
+                    string senhaCriptografada = Criptografia.CriptografaSenha(Password);
 
-                   bool confirmaLogin = await wUsuarioServices.Login(Name, senhaCriptografada);                    
-                    
+                    bool confirmaLogin = await wUsuarioServices.Login(Name, senhaCriptografada);
+
                     if (confirmaLogin)
                     {
                         Application.Current.MainPage = new AppShell();
                         return;
-                    }                       
+                    }
 
                     Mensagem.MensagemSenhaInvalida();
 
