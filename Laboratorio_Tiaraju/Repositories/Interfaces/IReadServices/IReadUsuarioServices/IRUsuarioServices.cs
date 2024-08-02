@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laboratorio_Tiaraju.FirebaseServices.Interfaces.IReadServices.IReadUsuarioServices
+namespace Laboratorio_Tiaraju.Repositories.Interfaces.IReadServices.IReadUsuarioServices
 {
     public interface IRUsuarioServices
     {

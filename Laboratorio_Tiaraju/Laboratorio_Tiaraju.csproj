@@ -61,6 +61,8 @@
 	  <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat-SemiBold.ttf" />
+	  <None Remove="Resources\Images\biblioteca.png" />
+	  <None Remove="Resources\Images\cardapio.jpeg" />
 	  <None Remove="Resources\Images\cq_logo.png" />
 	  <None Remove="Resources\Images\extintor.png" />
 	  <None Remove="Resources\Images\gerenciamentoprojeto.png" />
@@ -69,6 +71,7 @@
 	  <None Remove="Resources\Images\logobrancotiaraju.png" />
 	  <None Remove="Resources\Images\logotiaraju.png" />
 	  <None Remove="Resources\Images\manutencao.png" />
+	  <None Remove="Resources\Images\pautafixa.jpg" />
 	  <None Remove="Resources\Images\plus.png" />
 	  <None Remove="Resources\Images\rh_logo.png" />
 	  <None Remove="Resources\Images\segurancatrabalho.png" />
@@ -78,21 +81,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="FirebaseDatabase.net" Version="4.2.0" />
 		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
 		<PackageReference Include="Flunt" Version="2.0.5" />
 		<PackageReference Include="Flurl" Version="4.0.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.70" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="UraniumUI" Version="2.8.1" />
-		<PackageReference Include="UraniumUI.Material" Version="2.8.1" />
+		<PackageReference Include="UraniumUI" Version="2.9.0" />
+		<PackageReference Include="UraniumUI.Material" Version="2.9.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="FirebaseServices\Interfaces\IReadServices\IReadExtintorServices\" />
+	  <Folder Include="Repositories\Interfaces\IReadServices\IReadExtintorServices\" />
 	  <Folder Include="View\MAN\" />
 	  <Folder Include="View\CQ\" />
 	  <Folder Include="View\TI\" />

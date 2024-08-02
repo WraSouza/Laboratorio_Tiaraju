@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laboratorio_Tiaraju.FirebaseServices.Interfaces.IWriteServices.IWriteUsuarioServices
+namespace Laboratorio_Tiaraju.Repositories.Interfaces.IWriteServices.IWriteUsuarioServices
 {
     public interface IWUsuarioServices
     {

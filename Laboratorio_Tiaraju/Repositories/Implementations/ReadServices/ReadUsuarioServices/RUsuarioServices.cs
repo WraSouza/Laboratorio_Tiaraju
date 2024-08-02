@@ -1,6 +1,6 @@
 ﻿using Firebase.Database;
-using Laboratorio_Tiaraju.FirebaseServices.Interfaces.IReadServices.IReadUsuarioServices;
 using Laboratorio_Tiaraju.Model.Entities;
+using Laboratorio_Tiaraju.Repositories.Interfaces.IReadServices.IReadUsuarioServices;
 using Microsoft.Maui.Storage;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laboratorio_Tiaraju.FirebaseServices.Implementations.ReadServices.ReadUsuarioServices
+namespace Laboratorio_Tiaraju.Repositories.Implementations.ReadServices.ReadUsuarioServices
 {
     public class RUsuarioServices : IRUsuarioServices
     {
@@ -21,7 +21,7 @@ namespace Laboratorio_Tiaraju.FirebaseServices.Implementations.ReadServices.Read
         {
             return (await firebase.Child("Usuario")
                 .OnceAsync<Usuario>()).Select(item => new Usuario
-                {                   
+                {
                     Name = item.Object.Name,
                     UserName = item.Object.UserName,
                     IsActive = item.Object.IsActive,

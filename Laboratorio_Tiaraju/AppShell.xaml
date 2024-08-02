@@ -5,23 +5,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Laboratorio_Tiaraju"
     xmlns:views="clr-namespace:Laboratorio_Tiaraju.View.MainViews"   
+    xmlns:login="clr-namespace:Laboratorio_Tiaraju.View.Login"
     Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
     Title="Laboratorio_Tiaraju">
 
-    <!--<ShellContent
+    <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />-->
+        ContentTemplate="{DataTemplate login:LoginView}"
+        Route="MainPage" />
+    
     <TabBar>
-        <Tab Title="Início" Icon="home.png">
+        <Tab Title="Início" Icon="home.png" Route="HomeView">
             <ShellContent ContentTemplate="{DataTemplate views:HomeView}"/>
         </Tab>
 
-        <Tab Title="Setores" Icon="setores.png">
+        <Tab Title="Setores" Icon="setores.png" Route="DepartmentView">
             <ShellContent ContentTemplate="{DataTemplate views:DepartmentsView}"/>
         </Tab>
 
-        <Tab Title="Início">
+        <Tab Title="Início" Route="ProfileView">
             <ShellContent ContentTemplate="{DataTemplate views:ProfileView}"/>
         </Tab>
     </TabBar>

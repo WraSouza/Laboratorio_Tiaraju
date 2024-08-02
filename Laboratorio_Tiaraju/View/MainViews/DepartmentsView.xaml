@@ -2,9 +2,44 @@
 <ContentPage
     x:Class="Laboratorio_Tiaraju.View.MainViews.DepartmentsView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    >
-    <VerticalStackLayout>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Image">
+                <Setter Property="HeightRequest" Value="80" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="MontserratSemibold" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="15"
+        RowDefinitions="150,*,*,*">
+
+        <Image
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Center"
+            Source="logotiaraju.png" />
+
+        <VerticalStackLayout Grid.Row="1" Grid.Column="0">
+            <Image Source="cq_logo" />
+
+            <Label HorizontalTextAlignment="Center" Text="CQ" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="1" Grid.Column="1">
+            <Image Source="gerenciamentoprojeto.png" />
+            <Label HorizontalTextAlignment="Center" Text="PMO" />
+        </VerticalStackLayout>
+    </Grid>
+
+    <!--<VerticalStackLayout>
 
         <Image
             Margin="0,0,0,0"
@@ -42,7 +77,9 @@
                 HorizontalTextAlignment="Center"
                 Text="PMO" />
 
-            <!--  RH  -->
+    -->
+    <!--  RH  -->
+    <!--
             <Image
                 Grid.Row="2"
                 Grid.Column="0"
@@ -56,7 +93,9 @@
                 HorizontalTextAlignment="Center"
                 Text="RH" />
 
-            <!--  TI  -->
+    -->
+    <!--  TI  -->
+    <!--
             <Image
                 Grid.Row="2"
                 Grid.Column="1"
@@ -70,7 +109,9 @@
                 HorizontalTextAlignment="Center"
                 Text="TI" />
 
-            <!--  ST  -->
+    -->
+    <!--  ST  -->
+    <!--
             <Image
                 Grid.Row="4"
                 Grid.Column="0"
@@ -85,7 +126,9 @@
                 HorizontalTextAlignment="Center"
                 Text="ST" />
 
-            <!--  MAN  -->
+    -->
+    <!--  MAN  -->
+    <!--
             <Image
                 Grid.Row="4"
                 Grid.Column="1"
@@ -101,5 +144,5 @@
                 Text="MAN" />
 
         </Grid>
-    </VerticalStackLayout>
+    </VerticalStackLayout>-->
 </ContentPage>

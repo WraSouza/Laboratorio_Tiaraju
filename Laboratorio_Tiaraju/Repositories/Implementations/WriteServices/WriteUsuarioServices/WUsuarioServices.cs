@@ -1,6 +1,6 @@
 ﻿using Firebase.Database;
-using Laboratorio_Tiaraju.FirebaseServices.Interfaces.IWriteServices.IWriteUsuarioServices;
 using Laboratorio_Tiaraju.Model.Entities;
+using Laboratorio_Tiaraju.Repositories.Interfaces.IWriteServices.IWriteUsuarioServices;
 using Microsoft.Maui.Storage;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laboratorio_Tiaraju.FirebaseServices.Implementations.WriteServices.WriteUsuarioServices
+namespace Laboratorio_Tiaraju.Repositories.Implementations.WriteServices.WriteUsuarioServices
 {
     public class WUsuarioServices : IWUsuarioServices
     {

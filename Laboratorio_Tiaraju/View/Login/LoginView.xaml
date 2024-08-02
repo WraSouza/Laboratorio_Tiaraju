@@ -4,7 +4,7 @@
              x:Class="Laboratorio_Tiaraju.View.Login.LoginView"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel.Login"
-             Title="LoginView">
+             x:DataType="mvvm:LoginViewModel">
 
     <ContentPage.BindingContext>
         <mvvm:LoginViewModel />

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Laboratorio_Tiaraju.FirebaseServices.Interfaces.IWriteServices.ExtintoresServices
+namespace Laboratorio_Tiaraju.Repositories.Interfaces.IWriteServices.IWriteExtintorServices
 {
     public interface IWExtintorServices
     {
