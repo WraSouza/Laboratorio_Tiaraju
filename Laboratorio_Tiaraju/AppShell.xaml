@@ -3,29 +3,37 @@
     x:Class="Laboratorio_Tiaraju.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:comercialviews="clr-namespace:Laboratorio_Tiaraju.View.COMERCIAL"
     xmlns:local="clr-namespace:Laboratorio_Tiaraju"
-    xmlns:views="clr-namespace:Laboratorio_Tiaraju.View.MainViews"   
     xmlns:login="clr-namespace:Laboratorio_Tiaraju.View.Login"
+    xmlns:comercial="clr-namespace:Laboratorio_Tiaraju.View.COMERCIAL"
+    xmlns:views="clr-namespace:Laboratorio_Tiaraju.View.MainViews"
+    Title="Laboratorio_Tiaraju"
     Shell.FlyoutBehavior="Disabled"
-    Shell.NavBarIsVisible="False"
-    Title="Laboratorio_Tiaraju">
+    Shell.NavBarIsVisible="False">
 
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate login:LoginView}"
         Route="MainPage" />
-    
+
     <TabBar>
-        <Tab Title="Início" Icon="home.png" Route="HomeView">
-            <ShellContent ContentTemplate="{DataTemplate views:HomeView}"/>
+        <Tab
+            Title="Início"
+            Icon="home.png"
+            Route="HomeView">
+            <ShellContent ContentTemplate="{DataTemplate views:HomeView}" />
         </Tab>
 
-        <Tab Title="Setores" Icon="setores.png" Route="DepartmentView">
-            <ShellContent ContentTemplate="{DataTemplate views:DepartmentsView}"/>
+        <Tab
+            Title="Setores"
+            Icon="setores.png"
+            Route="DepartmentView">
+            <ShellContent ContentTemplate="{DataTemplate views:DepartmentsView}" />
         </Tab>
 
-        <Tab Title="Início" Route="ProfileView">
-            <ShellContent ContentTemplate="{DataTemplate views:ProfileView}"/>
+        <Tab Title="Perfil" Route="ProfileView">
+            <ShellContent ContentTemplate="{DataTemplate comercial:InsertBusinessPartnerView}" />
         </Tab>
     </TabBar>
 

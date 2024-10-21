@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Laboratorio_Tiaraju.View.Login.LoginView"
-             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-             xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel.Login"
-             x:DataType="mvvm:LoginViewModel">
+<ContentPage
+    x:Class="Laboratorio_Tiaraju.View.Login.LoginView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+    xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel.Login"
+    x:DataType="mvvm:LoginViewModel">
 
     <ContentPage.BindingContext>
         <mvvm:LoginViewModel />
@@ -14,58 +15,58 @@
     <Grid BackgroundColor="#0E7B35" RowDefinitions="*,*">
 
         <Image
-         Grid.Row="0"
-         HeightRequest="100"
-         Source="logobrancotiaraju.png" />
+            Grid.Row="0"
+            HeightRequest="100"
+            Source="logobrancotiaraju.png" />
 
         <Border
-         Grid.Row="1"
-         Grid.RowSpan="2"
-         BackgroundColor="White"
-         StrokeShape="RoundRectangle 100,0,0,0">
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            BackgroundColor="White"
+            StrokeShape="RoundRectangle 100,0,0,0">
 
             <VerticalStackLayout
-             Margin="0,25,0,0"
-             Padding="10"
-             Spacing="10">
+                Margin="0,25,0,0"
+                Padding="10"
+                Spacing="10">
                 <Label
-                 FontSize="30"
-                 FontFamily="MontserratRegular"
-                 HorizontalTextAlignment="Center"
-                 Text="Login"
-                 TextColor="Black" />
+                    FontFamily="MontserratRegular"
+                    FontSize="30"
+                    HorizontalTextAlignment="Center"
+                    Text="Login"
+                    TextColor="Black" />
 
 
                 <material:TextField
-                 Title="Usuário"
-                 FontFamily="MontserratRegular"
-                 Text="{Binding Name}" />
+                    Title="Usuário"
+                    FontFamily="MontserratRegular"
+                    Text="{Binding Name}" />
 
                 <material:TextField
-                 Title="Senha"
-                 IsPassword="True"
-                 FontFamily="MontserratRegular"
-                 Text="{Binding Password}" />
+                    Title="Senha"
+                    FontFamily="MontserratRegular"
+                    IsPassword="True"
+                    Text="{Binding Password}" />
 
                 <Grid Margin="0,10,0,0">
 
                     <Button
-                     Margin="20,50,20,0"
-                     BackgroundColor="OrangeRed"
-                     Command="{Binding LoginCommand}"
-                     FontFamily="MontserratSemibold"
-                     HeightRequest="50"
-                     StyleClass="ElevatedButton"
-                     Text="Login"
-                     TextColor="White" />
+                        Margin="20,50,20,0"
+                        BackgroundColor="OrangeRed"
+                        Command="{Binding LoginCommand}"
+                        FontFamily="MontserratSemibold"
+                        HeightRequest="50"
+                        StyleClass="ElevatedButton"
+                        Text="Login"
+                        TextColor="White" />
 
                     <ActivityIndicator
-                     Margin="0,50,0,0"
-                     HorizontalOptions="Center"
-                     IsRunning="{Binding LoginCommand.IsRunning}"
-                     IsVisible="{Binding LoginCommand.IsRunning}"
-                     VerticalOptions="Center"
-                     Color="White" />
+                        Margin="0,50,0,0"
+                        HorizontalOptions="Center"
+                        IsRunning="{Binding LoginCommand.IsRunning}"
+                        IsVisible="{Binding LoginCommand.IsRunning}"
+                        VerticalOptions="Center"
+                        Color="White" />
 
                 </Grid>
 

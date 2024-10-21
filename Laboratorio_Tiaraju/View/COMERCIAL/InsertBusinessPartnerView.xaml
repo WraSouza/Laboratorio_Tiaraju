@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Laboratorio_Tiaraju.View.COMERCIAL.InsertBusinessPartnerView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
+    Title="InsertBusinessPartnerView"
+    x:DataType="mvvm:InsertBusinessPartnerViewModel">
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="15"
+        RowDefinitions="150,*">
+
+        <Image
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            HeightRequest="80"
+            HorizontalOptions="Center"
+            Source="logotiaraju.png" />
+
+        <ScrollView Grid.Row="1" Grid.ColumnSpan="2">
+
+            <StackLayout
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Padding="20"
+                Spacing="10">
+
+                <Label Text="Nome do Cliente" />
+
+                <Entry Text="{Binding Nome}" />
+
+                <Label Text="Telefone" />
+
+                <Entry Text="{Binding Telefone}" />
+
+                <Label Text="Email" />
+
+                <Entry Text="{Binding Email}" />
+
+                <Label Text="CPF" />
+
+                <Entry
+                    Keyboard="Numeric"
+                    MaxLength="11"
+                    Text="{Binding Cpf}" />
+
+                <Label Text="Rua" />
+
+                <Entry Text="{Binding Rua}" />
+
+                <Label Text="Número" />
+
+                <Entry Keyboard="Numeric" Text="{Binding Numero}" />
+
+                <Label Text="Bairro" />
+
+                <Entry Text="{Binding Bairro}" />
+
+                <Label Text="Cidade" />
+
+                <Entry Text="{Binding Cidade}" />
+
+                <Label Text="UF" />
+
+                <Entry MaxLength="2" Text="{Binding Uf}" />
+
+                <Label Text="CEP" />
+
+                <Entry MaxLength="8" Text="{Binding Cep}" />
+
+                <Button Command="{Binding AdicionarParceiroNegocioCommand}" Text="Adicionar" />
+
+            </StackLayout>
+
+        </ScrollView>
+    </Grid>
+</ContentPage>

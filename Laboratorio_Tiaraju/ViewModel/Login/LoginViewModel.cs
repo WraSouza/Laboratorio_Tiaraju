@@ -14,7 +14,7 @@ using Laboratorio_Tiaraju.View.MainViews;
 namespace Laboratorio_Tiaraju.ViewModel.Login
 {
     public partial class LoginViewModel : ObservableObject
-    {       
+    {
 
         [ObservableProperty]
         [NotifyCanExecuteChangedFor(nameof(LoginCommand))]

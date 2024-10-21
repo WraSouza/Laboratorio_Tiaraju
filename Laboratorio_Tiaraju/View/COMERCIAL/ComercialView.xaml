@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Laboratorio_Tiaraju.View.MainViews.DepartmentsView"
+    x:Class="Laboratorio_Tiaraju.View.COMERCIAL.ComercialView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mvvm="clr-namespace:Laboratorio_Tiaraju.ViewModel"
-    x:DataType="mvvm:DepartmentsViewModel">
+    Title="Comercial"
+    x:DataType="mvvm:ComercialViewModel">
 
     <ContentPage.BindingContext>
-        <mvvm:DepartmentsViewModel />
+        <mvvm:ComercialViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
@@ -33,18 +34,28 @@
             HorizontalOptions="Center"
             Source="logotiaraju.png" />
 
-        <VerticalStackLayout Grid.Row="1" Grid.Column="0">
-            <Image Source="comercial.png">
+        <VerticalStackLayout
+            Grid.Row="1"
+            Grid.Column="0"
+            Spacing="5">
+            <Image HeightRequest="50" Source="itemsap.png">
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GoToComercialViewCommand}" />
+                    <TapGestureRecognizer Command="{Binding GoToItemSAPViewCommand}" />
                 </Image.GestureRecognizers>
             </Image>
-            <Label HorizontalTextAlignment="Center" Text="COMERCIAL" />
+            <Label HorizontalTextAlignment="Center" Text="Itens SAP" />
         </VerticalStackLayout>
 
-        <VerticalStackLayout Grid.Row="1" Grid.Column="1">
-            <Image Source="cq_logo" />
-            <Label HorizontalTextAlignment="Center" Text="CQ" />
+        <VerticalStackLayout
+            Grid.Row="1"
+            Grid.Column="1"
+            Spacing="5">
+            <Image HeightRequest="50" Source="refresh">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding UpdateStockInStoreCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalTextAlignment="Center" Text="Atualizar Estoque Loja" />
         </VerticalStackLayout>
 
         <VerticalStackLayout Grid.Row="2" Grid.Column="0">
@@ -52,6 +63,4 @@
             <Label HorizontalTextAlignment="Center" Text="PMO" />
         </VerticalStackLayout>
     </Grid>
-
-
 </ContentPage>
