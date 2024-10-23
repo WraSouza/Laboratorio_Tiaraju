@@ -75,5 +75,9 @@
             </StackLayout>
 
         </ScrollView>
+
+        <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center"
+                           IsRunning="{Binding AdicionarParceiroNegocioCommand.IsRunning}"
+                           IsVisible="{Binding AdicionarParceiroNegocioCommand.IsRunning}"/>
     </Grid>
 </ContentPage>

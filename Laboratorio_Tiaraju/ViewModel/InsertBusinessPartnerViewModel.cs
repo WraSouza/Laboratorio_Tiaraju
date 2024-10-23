@@ -4,6 +4,8 @@ using CommunityToolkit.Mvvm.Input;
 using Laboratorio_Tiaraju.Helpers;
 using Laboratorio_Tiaraju.Model.Entities;
 using Laboratorio_Tiaraju.Repositories.Implementations.WriteServices.WriteBPRepository;
+using Laboratorio_Tiaraju.Validators;
+using System.Text;
 
 namespace Laboratorio_Tiaraju.ViewModel
 {
@@ -43,38 +45,55 @@ namespace Laboratorio_Tiaraju.ViewModel
         private List<BPFiscalTaxIDCollection> bpFiscalCollection = new();
 
         [RelayCommand]
-        async void AdicionarParceiroNegocio()
+        async Task AdicionarParceiroNegocio()
         {
             string fullName = RetiraAcento.RetirarAcentuacao(Nome);
 
             BPFiscalTaxIDCollection bpFiscal = new BPFiscalTaxIDCollection("", "", Cpf);
 
-            BPAddress bPAddress = new BPAddress(Rua, Bairro, Cep, Cidade, Uf, Numero);
+            BPAddress bPAddress = new BPAddress(Rua, Bairro, Cep, Cidade.ToUpper(), Uf.ToUpper(), Numero);
 
             bpAddresses.Add(bPAddress);
 
             bpFiscalCollection.Add(bpFiscal);
 
-            if(bpAddresses.Count > 1)
+            BusinessPartner businessPartner = new BusinessPartner(fullName.ToUpper(), Telefone, Email, bpFiscalCollection, bpAddresses);
+
+            var contract = new BusinessPartnerContract(businessPartner);
+
+            if (!contract.IsValid)
             {
-                bpAddresses.RemoveAt(1);
+                var messages = contract.Notifications.Select(x => x.Message);
+
+                var sb = new StringBuilder();
+
+                foreach (var message in messages)
+                    sb.Append($"{message}\n");
+
+                await Shell.Current.DisplayAlert("Atenção", sb.ToString(), "OK");
+
+                return;
             }
 
-            if(bpFiscalCollection.Count > 1)
+            bool answer = await Shell.Current.DisplayAlert("", "Gostaria de Cadastrar o Parceiro de Negócios Informado?", "Sim", "Não");
+
+            if(answer)
             {
-                bpFiscalCollection.RemoveAt(1);    
+                bool insereBP = await bpRepository.InsertBusinessPartnerAsync(businessPartner);
+
+                if (insereBP)
+                {
+                    var newtoast = Toast.Make("Parceiro de Negócio Cadastrado Com Sucesso", CommunityToolkit.Maui.Core.ToastDuration.Long);
+
+                    await newtoast.Show();
+
+                    return;
+                }
+
+                await Shell.Current.DisplayAlert("", "CPF Informado Já Possui Cadastro.", "OK");
             }
 
-            BusinessPartner businessPartner = new BusinessPartner(fullName, Telefone, Email, bpFiscalCollection, bpAddresses);
-
-            bool insereBP = await bpRepository.InsertBusinessPartnerAsync(businessPartner);
-
-            if (insereBP)
-            {
-                var newtoast = Toast.Make("Parceiro de Negócio Cadastrado Com Sucesso", CommunityToolkit.Maui.Core.ToastDuration.Long);
-
-                await newtoast.Show();
-            }
+           
         }
     }
 }

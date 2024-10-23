@@ -59,8 +59,12 @@
         </VerticalStackLayout>
 
         <VerticalStackLayout Grid.Row="2" Grid.Column="0">
-            <Image Source="gerenciamentoprojeto.png" />
-            <Label HorizontalTextAlignment="Center" Text="PMO" />
+            <Image Source="adduser.png" HeightRequest="50">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToInsertBPViewCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Label HorizontalTextAlignment="Center" Text="Adicionar Usuário" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

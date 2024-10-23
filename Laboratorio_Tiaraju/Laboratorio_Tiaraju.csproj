@@ -61,6 +61,7 @@
 	  <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat-SemiBold.ttf" />
+	  <None Remove="Resources\Images\adduser.png" />
 	  <None Remove="Resources\Images\biblioteca.png" />
 	  <None Remove="Resources\Images\buyproduct.png" />
 	  <None Remove="Resources\Images\cardapio.jpeg" />

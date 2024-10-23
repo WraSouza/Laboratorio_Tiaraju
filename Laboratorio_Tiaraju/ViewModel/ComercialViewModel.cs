@@ -14,6 +14,13 @@ namespace Laboratorio_Tiaraju.ViewModel
         }
 
         [RelayCommand]
+        public void GoToInsertBPView()
+        {
+            Shell.Current.GoToAsync(nameof(InsertBusinessPartnerView));
+
+        }
+
+        [RelayCommand]
         public async void UpdateStockInStore()
         {
             bool answer = await Shell.Current.DisplayAlert("", "Gostaria de Atualizar o Estoque da Loja Virtual?", "Sim", "Não");

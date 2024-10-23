@@ -13,6 +13,7 @@ namespace Laboratorio_Tiaraju
             Routing.RegisterRoute(nameof(DepartmentsView), typeof(DepartmentsView));
             Routing.RegisterRoute(nameof(ComercialView), typeof(ComercialView));
             Routing.RegisterRoute(nameof(ItemSAPView), typeof(ItemSAPView));
+            Routing.RegisterRoute(nameof(InsertBusinessPartnerView), typeof(InsertBusinessPartnerView));
         }
     }
 }
